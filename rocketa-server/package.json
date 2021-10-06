@@ -1,0 +1,14 @@
+{
+  "name": "rocketa-server",
+  "version": "1.0.0",
+  "description": "Backend server for Rocket Airlines website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sakshi Kasat, Sudheendra Katikar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
