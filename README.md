@@ -5,6 +5,12 @@
 #Aniruddha Arun Narkhede
 #Siddh Patel
 
+# Tech-Stack
+1. Front End - React
+2. Back End - Node.JS
+3. Database - MongoDB
+4. Hosting - AWS - Elastic beanstalk
+
 # Instructions
 
 1. Clone repo
