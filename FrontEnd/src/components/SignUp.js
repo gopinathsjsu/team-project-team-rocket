@@ -12,6 +12,24 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormLabel from '@mui/material/FormLabel';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+
+<text>Start your MileagePlus adventure by creating an account. Our MileagePlus loyalty program is free to join and rewards you with miles when you fly and when you enjoy everyday activities and experiences.
+
+</text>
+
 
 function Copyright(props) {
   return (
@@ -29,20 +47,27 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [value, setValue] = React.useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
+    /*console.log({
       email: data.get('email'),
       password: data.get('password'),
-    });
+    });*/
+
   };
 
+
   return (
+    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
+        
         <CssBaseline />
+        
         <Box
           sx={{
             marginTop: 8,
@@ -51,15 +76,21 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: '#1976d2' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
+          <Typography component="h1" variant="h4">
+            <b>Sign up</b>
           </Typography>
+          <br></br>
+          <Typography component="h1" variant="h5">
+            <b>About Me</b>
+          </Typography>
+
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
+              <FormLabel component="legend">First Name*</FormLabel><br></br>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
@@ -70,7 +101,8 @@ export default function SignUp() {
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
+              <FormLabel component="legend">Last Name*</FormLabel><br></br>
                 <TextField
                   required
                   fullWidth
@@ -79,49 +111,43 @@ export default function SignUp() {
                   name="lastName"
                   autoComplete="family-name"
                 />
+                <br></br>
               </Grid>
+              
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
+                <FormLabel component="legend">Gender*</FormLabel>
+                <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="other" control={<Radio />} label="Unspecified" />
+                </RadioGroup>
               </Grid>
+
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
+              <FormLabel component="legend">Date Of Birth*</FormLabel>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="MM/DD/YYYY"
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+              </LocalizationProvider>
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+
             </Grid>
+            <Grid>
             <Button
               type="submit"
-              fullWidth
+              halfWidth
               variant="contained"
+              
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Next
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
             </Grid>
           </Box>
         </Box>

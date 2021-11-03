@@ -1,11 +1,18 @@
 .App {
   text-align: center;
-  background-image: url("https://wallpaperaccess.com/full/254361.jpg");
+  /*background-image: url("https://wallpaperaccess.com/full/254361.jpg");
   position: fixed;
   min-width: 100%;
   max-width: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center;*/
+}
+
+.bg_image{
+  background-image: url('./utils/images/bg.jpeg');
+  background-size: cover;
+  height: 100vh;
+
 }
 
 .App-logo {

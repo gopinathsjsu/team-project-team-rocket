@@ -18,6 +18,10 @@ export default function ButtonAppBar() {
     }
 
   return (
+    <div style={{
+      backgroundImage: 'url("https://wallpaperaccess.com/full/254361.jpg")',
+      height: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundAttachment:"fixed", backgroundPosition:"center"
+    }}>
       
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -31,5 +35,6 @@ export default function ButtonAppBar() {
       </AppBar>
       <Flightdetails />
     </Box>
+   </div> 
   );
 }
