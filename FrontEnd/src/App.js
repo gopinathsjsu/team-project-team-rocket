@@ -4,6 +4,7 @@ import SignUp from './components/SignUp';
 import ContactInfo from './components/ContactInfo';
 import SignIn from './components/SignIn';
 import Flightdetail from './components/Flightdetail';
+import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/Contactinfo' component={ContactInfo} />
         <Route path='/Signin' component={SignIn} />
         <Route exact path='/Flightdetail' component={Flightdetail} />
+        <Route exact path='/Flightlist' component={FlightList} />
         <Route exact path='/' component={AppBar} />
         </Switch>
         <div  className="container"></div>

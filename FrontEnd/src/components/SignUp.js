@@ -25,6 +25,7 @@ import DatePicker from '@mui/lab/DatePicker';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
+import history from "../helpers/history";
 
 <text>Start your MileagePlus adventure by creating an account. Our MileagePlus loyalty program is free to join and rewards you with miles when you fly and when you enjoy everyday activities and experiences.
 
@@ -48,7 +49,11 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [value, setValue] = React.useState(null);
-
+  
+  const navigateToContact=()=>{
+    console.log("On navigate button click assasasa");
+    history.push("/ContactInfo");
+}
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -57,6 +62,8 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });*/
+
+    
 
   };
 
@@ -140,11 +147,11 @@ export default function SignUp() {
             </Grid>
             <Grid>
             <Button
+              onClick={navigateToContact}
               type="submit"
               halfWidth
               variant="contained"
-              
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 }}  
             >
               Next
             </Button>

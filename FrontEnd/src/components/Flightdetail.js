@@ -31,6 +31,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import history from "../helpers/history";
 
 /*import './Flightdetail.css';*/
 
@@ -103,6 +104,11 @@ export default function FloatingActionButtonZoom() {
     setValue(index);
   };
 
+  const navigateToFlightlist=()=>{
+    console.log("On navigate button click assasasa");
+    history.push("/Flightlist");
+}
+
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
@@ -131,7 +137,7 @@ export default function FloatingActionButtonZoom() {
 
   return (
     <Box
-      pt={16}
+      pt={25}
       pl={10}
       >
     <Box
@@ -221,7 +227,7 @@ export default function FloatingActionButtonZoom() {
             <br></br><br></br>
 
             <FormControl>
-            <Button variant="contained">Find Flights</Button>
+            <Button onClick={navigateToFlightlist} variant="contained">Find Flights</Button>
             </FormControl>
 
         </TabPanel>
