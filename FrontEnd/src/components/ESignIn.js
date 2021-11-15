@@ -29,9 +29,9 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function ESignIn() {
 
-  console.log("inside signin");
+  console.log("inside employee signin");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,7 +60,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Employee Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -102,7 +102,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/SignUp" variant="body2">
+                <Link href="/ESignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
