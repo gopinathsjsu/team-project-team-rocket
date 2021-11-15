@@ -1,6 +1,3 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "admin",
-  PASSWORD: "Testing@123",
-  DB: "rocket"
+  url: "mongodb+srv://sudheendra:sudheendra@cluster202.8iojt.mongodb.net/twozerotwo?retryWrites=true&w=majority"
 };

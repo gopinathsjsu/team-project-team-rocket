@@ -1,43 +1,61 @@
 const Flight = require("../models/flights.model.js");
 
 // Create and save a new flight
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 	if(!req.body){
 		res.status(400).send({
 			message: "Content cannot be empty"
 		});
 	}
 
+    // Create flight
 	const flight = new Flight({
-		source: req.body.source,
+		airline_code: req.body.airline_code,
+		airline_name: req.body.airline_name,
+		tail_number: req.body.tail_number,
+		number: req.body.number,
+		origin_code: req.body.origin_code,
+		origin_airport: req.body.origin_airport,
+		origin: req.body.origin,
+		destination_code: req.body.destination_code,
+		destination_airport: req.body.destination_airport,
 		destination: req.body.destination,
-		active: req.body.active
+		departure_time: req.body.departure_time,
+		arrival_time: req.body.arrival_time,
+		distance: req.body.distance,
+		status: req.body.status,
+		plane: req.body.plane
 	});
 
-	Flight.create(flight, (err,data) => {
-		if(err)
-			res.status(500).send({
-				message: err.message || "Some error occured on creation."
-			});
-		else res.send(data);
-	});
+	try{
+		const data = await flight.save(flight);
+		res.send(data);
+	} catch(e){
+		console.log(e);
+		res.status(500).send({
+			message: "Error occured on flight creation."
+		});
+	}
+
 };
 
-exports.findByLocations = (req, res) => {
+exports.findByLocations = async (req, res) => {
 	if(!req.body){
 		res.status(400).send({
 			message: "Content cannot be empty"
 		});
 	}
 
-	const source = req.body.source;
+	const origin = req.body.origin;
 	const destination = req.body.destination;
 
-	Flight.findByLocations(source, destination, (err,data) => {
-		if(err)
-			res.status(500).send({
-				message: err.message || "Some error occured on fetch."
-			});
-		else res.send(data);
-	})
+	try {
+		const data = await Flight.find({origin: origin, destination: destination});
+		res.send(data);
+	} catch(e) {
+		console.log(e);
+		res.status(500).send({
+			message: "Error on flight fetch."
+		});
+	}
 };

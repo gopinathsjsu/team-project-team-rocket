@@ -1,40 +1,29 @@
-const sql = require("./db.js");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-//constructor
-const Flight = function(flight){
-	this.source = flight.source;
-	this.destination = flight.destination;
-	this.active = flight.active;
-};
+const FlightSchema = new Schema({
+		airline_code: {type: String, default: "RA"},
+		airline_name: {type: String, default: "Rocket Airlines Inc."},
+		tail_number: {type: String, required: true},
+		number: {type: String, required: true},
+		origin_code: {type: String, required:true},
+		origin_airport: {type: String, required:true},
+		origin: {type: String, required:true},
+		destination_code: {type: String, required:true},
+		destination_airport: {type: String, required:true},
+		destination: {type: String, required:true},
+		departure_time: {type: Date, required:true},
+		arrival_time: {type: Date, required:true},
+		distance: {type: String, required:true},
+		status: {type: String, required:true, default:"Open"},
+		plane: {type: mongoose.ObjectId, default: null}
+	},
+ 	{ timestamps: true }
+);
 
-Flight.create = (newFlight, result) => {
-	sql.query("INSERT INTO Flights SET ?", newFlight, (err, res) => {
-		if(err){
-			console.log("error: ", err);
-			result(err, null);
-			return;
-		}
-		console.log("Flight created: ", {id: res.insertId, ...newFlight});
-		result(null, {id: res.insertId, ...newFlight});
-	});
-};
-
-Flight.findByLocations = (source, destination, result) => {
-	sql.query(`SELECT * FROM flight_dataset WHERE ORIGINCITYNAME = '${source}' AND DESTCITYNAME = '${destination}'`, (err, res) => {
-		if(err){
-			console.log("error: ", err);
-			result(err, null);
-			return;
-		}
-		if(res.length){
-			console.log("Number of flights: ", res[0]);
-			result(null, res[0]);
-			return;
-		}
-
-		//No flights for the destination
-		result({kind: "not_found"}, null);
-	});
-};
+const Flight = mongoose.model(
+	"flight",
+	FlightSchema
+);
 
 module.exports = Flight;
