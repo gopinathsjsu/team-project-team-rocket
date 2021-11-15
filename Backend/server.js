@@ -1,18 +1,59 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express')
+const path = require('path')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+// const passport = require('passport');
+const mongoose = require('mongoose')
+const db = require('./config/db.config')
+const server = require('./config/server.config')
+
+mongoose.connect(db.url);
+
+//On connection
+mongoose.connection.on('connected', function () {
+	console.log('connected to ' + db.url);
+});
+
+//On error
+mongoose.connection.on('error', function () {
+	console.log('error');
+});
 
 const app = express();
 
+// const users = require('./routes/users');
+// const employees = require('./routes/employees');
+const flights = require('./routes/flight.route');
+
+const port = 3000;
+
+//cors MW
+app.use(cors());
+
+//Set static folder
+//app.use(express.static(path.join(__dirname, 'public')));
+
+//Body parser MW
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({extended:true}));
+//Passport MW
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.get("/", (req,res) => {
-	res.json({message: "Welcome to the application!"});
+// require('./config/passport')(passport);
+
+// app.use('/users', users);
+// app.use('/employees', employees);
+app.use('/flights', flights);
+
+app.get('/', function (req, res) {
+	res.send('invalid');
 });
 
-require("./app/routes/flight.routes.js")(app);
+app.get('*', function (req, res) {
+	//  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
-app.listen(3000, () => {
-	console.log("Server is running on port 3000.");
+app.listen(server.port, server.host, function () {
+	console.log('Server started on port ' + port);
 });
