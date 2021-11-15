@@ -1,0 +1,86 @@
+airline_code,airline_name,tail_number,number,origin_code,origin_airport,origin,destination_code,destination_airport,destination,departure_time,arrival_time,distance,status
+RA,Rocket Airlines Inc.,N1836U,223,EAR,Humans United Space Station,Earth,MAR,Musk Interplanetary Space Station,Mars,1510,1630,888 miles,Open
+RA,Rocket Airlines Inc.,N7288U,1047,EAR,Humans United Space Station,Earth,MOO,Armstrong Space Station,Moon,918,1126,925 miles,Open
+RA,Rocket Airlines Inc.,N816UA,391,EAR,Humans United Space Station,Earth,PLT,Ronald Ekers Space Station,Pluto,1644,1845,1721 miles,Open
+RA,Rocket Airlines Inc.,N203UA,636,EAR,Humans United Space Station,Earth,MER,Mariner 10 Station,Mercury,727,1025,719 miles,Open
+RA,Rocket Airlines Inc.,N526UA,1436,EAR,Humans United Space Station,Earth,URA,Voyager II Space Station,Uranus,748,1010,316 miles,Open
+RA,Rocket Airlines Inc.,N528UA,109,EAR,Humans United Space Station,Earth,SAT,Dione Space Station,Saturn,951,1157,1745 miles,Open
+RA,Rocket Airlines Inc.,N782UA,762,EAR,Humans United Space Station,Earth,VEN,Galileo Space Station,Venus,801,1025,1846 miles,Open
+RA,Rocket Airlines Inc.,N7259U,1500,EAR,Humans United Space Station,Earth,NPT,Triton Space Station,Neptune,1738,2309,1005 miles,Open
+RA,Rocket Airlines Inc.,,1116,SAT,Dione Space Station,Saturn,VEN,Galileo Space Station,Venus,1457,1611,337 miles,Open
+RA,Rocket Airlines Inc.,,1770,SAT,Dione Space Station,Saturn,PLT,Ronald Ekers Space Station,Pluto,1706,1924,954 miles,Open
+RA,Rocket Airlines Inc.,,36,SAT,Dione Space Station,Saturn,JUP,IO Space Station,Jupiter,729,1518,2288 miles,Open
+RA,Rocket Airlines Inc.,,842,SAT,Dione Space Station,Saturn,EAR,Humans United Space Station,Earth,1330,1918,1745 miles,Open
+RA,Rocket Airlines Inc.,,30,SAT,Dione Space Station,Saturn,MER,Mariner 10 Station,Mercury,1240,2048,2454 miles,Open
+RA,Rocket Airlines Inc.,,533,SAT,Dione Space Station,Saturn,MAR,Musk Interplanetary Space Station,Mars,1303,1636,849 miles,Open
+RA,Rocket Airlines Inc.,,290,SAT,Dione Space Station,Saturn,NPT,Triton Space Station,Neptune,1253,2025,2217 miles,Open
+RA,Rocket Airlines Inc.,N826UA,530,SAT,Dione Space Station,Saturn,MOO,Armstrong Space Station,Moon,1341,1847,1379 miles,Open
+RA,Rocket Airlines Inc.,N65832,1166,MOO,Armstrong Space Station,Moon,SAT,Dione Space Station,Saturn,2139,2325,1379 miles,Open
+RA,Rocket Airlines Inc.,N57870,1764,MOO,Armstrong Space Station,Moon,NPT,Triton Space Station,Neptune,848,1156,854 miles,Open
+RA,Rocket Airlines Inc.,N462UA,509,MOO,Armstrong Space Station,Moon,EAR,Humans United Space Station,Earth,1025,1306,925 miles,Open
+RA,Rocket Airlines Inc.,N69833,1905,MOO,Armstrong Space Station,Moon,MAR,Musk Interplanetary Space Station,Mars,1144,1517,862 miles,Open
+RA,Rocket Airlines Inc.,N66841,1456,MOO,Armstrong Space Station,Moon,VEN,Galileo Space Station,Venus,1016,1259,1635 miles,Open
+RA,Rocket Airlines Inc.,N463UA,220,SAT,Dione Space Station,Saturn,URA,Voyager II Space Station,Uranus,2316,634,2052 miles,Open
+RA,Rocket Airlines Inc.,N72405,1779,MOO,Armstrong Space Station,Moon,PLT,Ronald Ekers Space Station,Pluto,942,1222,1874 miles,Open
+RA,Rocket Airlines Inc.,N415UA,1979,MOO,Armstrong Space Station,Moon,MER,Mariner 10 Station,Mercury,856,1309,1400 miles,Open
+RA,Rocket Airlines Inc.,N78509,1616,MOO,Armstrong Space Station,Moon,URA,Voyager II Space Station,Uranus,1627,1950,1091 miles,Open
+RA,Rocket Airlines Inc.,,97,MER,Mariner 10 Space Station,Mercury,SAT,Dione Space Station,Saturn,800,1043,2454 miles,Open
+RA,Rocket Airlines Inc.,,91,MER,Mariner 10 Space Station,Mercury,MAR,Musk Interplanetary Space Station,Mars,839,1109,1617 miles,Open
+RA,Rocket Airlines Inc.,,329,MER,Mariner 10 Space Station,Mercury,EAR,Humans United Space Station,Earth,2040,2136,719 miles,Open
+RA,Rocket Airlines Inc.,,19,MER,Mariner 10 Space Station,Mercury,VEN,Galileo Space Station,Venus,1703,1950,2565 miles,Open
+RA,Rocket Airlines Inc.,,1683,MER,Mariner 10 Space Station,Mercury,NPT,Triton Space Station,Neptune,1229,1506,938 miles,Open
+RA,Rocket Airlines Inc.,,1261,MER,Mariner 10 Space Station,Mercury,JUP,IO Space Station,Jupiter,1458,1600,213 miles,Open
+RA,Rocket Airlines Inc.,N437UA,243,MER,Mariner 10 Space Station,Mercury,PLT,Ronald Ekers Space Station,Pluto,1800,2047,2401 miles,Open
+RA,Rocket Airlines Inc.,N14237,119,MER,Mariner 10 Space Station,Mercury,URA,Voyager II Space Station,Uranus,1818,1945,404 miles,Open
+RA,Rocket Airlines Inc.,N53442,1589,MER,Mariner 10 Space Station,Mercury,MOO,Armstrong Space Station,Moon,844,1121,1400 miles,Open
+RA,Rocket Airlines Inc.,N576UA,329,NPT,Triton Space Station,Neptune,MAR,Musk Interplanetary Space Station,Mars,851,1021,1546 miles,Open
+RA,Rocket Airlines Inc.,N583UA,1219,NPT,Triton Space Station,Neptune,EAR,Humans United Space Station,Earth,814,953,1005 miles,Open
+RA,Rocket Airlines Inc.,N407UA,491,NPT,Triton Space Station,Neptune,SAT,Dione Space Station,Saturn,801,1023,2217 miles,Open
+RA,Rocket Airlines Inc.,N573UA,1217,NPT,Triton Space Station,Neptune,JUP,IO Space Station,Jupiter,1421,1614,758 miles,Open
+RA,Rocket Airlines Inc.,N565UA,95,NPT,Triton Space Station,Neptune,VEN,Galileo Space Station,Venus,730,1005,2445 miles,Open
+RA,Rocket Airlines Inc.,N468UA,338,NPT,Triton Space Station,Neptune,URA,Voyager II Space Station,Uranus,1701,1924,895 miles,Open
+RA,Rocket Airlines Inc.,N567UA,998,NPT,Triton Space Station,Neptune,MER,Mariner 10 Station,Mercury,1935,2200,937 miles,Open
+RA,Rocket Airlines Inc.,N838UA,261,NPT,Triton Space Station,Neptune,MOO,Armstrong Space Station,Moon,756,925,854 miles,Open
+RA,Rocket Airlines Inc.,,1760,VEN,Galileo Space Station,Venus,PLT,Ronald Ekers Space Station,Pluto,1216,1435,679 miles,Open
+RA,Rocket Airlines Inc.,,194,VEN,Galileo Space Station,Venus,EAR,Humans United Space Station,Earth,1625,2234,1846 miles,Open
+RA,Rocket Airlines Inc.,,1640,VEN,Galileo Space Station,Venus,MAR,Musk Interplanetary Space Station,Mars,633,,956 miles,Open
+RA,Rocket Airlines Inc.,,810,VEN,Galileo Space Station,Venus,SAT,Dione Space Station,Saturn,1227,1358,337 miles,Open
+RA,Rocket Airlines Inc.,,208,VEN,Galileo Space Station,Venus,JUP,IO Space Station,Jupiter,1306,2104,2419 miles,Open
+RA,Rocket Airlines Inc.,,828,VEN,Galileo Space Station,Venus,MOO,Armstrong Space Station,Moon,1208,1810,1635 miles,Open
+RA,Rocket Airlines Inc.,,254,VEN,Galileo Space Station,Venus,NPT,Triton Space Station,Neptune,1231,2040,2445 miles,Open
+RA,Rocket Airlines Inc.,N539UA,72,VEN,Galileo Space Station,Venus,MER,Mariner 10 Station,Mercury,918,1728,2565 miles,Open
+RA,Rocket Airlines Inc.,N34282,1681,VEN,Galileo Space Station,Venus,URA,Voyager II Space Station,Uranus,2224,608,2161 miles,Open
+RA,Rocket Airlines Inc.,N36272,1148,PLT,Ronald Ekers Space Station,Pluto,JUP,IO Space Station,Jupiter,1632,3,2306 miles,Open
+RA,Rocket Airlines Inc.,N76515,1463,PLT,Ronald Ekers Space Station,Pluto,URA,Voyager II Space Station,Uranus,2344,649,2021 miles,Open
+RA,Rocket Airlines Inc.,N37293,1173,PLT,Ronald Ekers Space Station,Pluto,VEN,Galileo Space Station,Venus,1822,2017,679 miles,Open
+RA,Rocket Airlines Inc.,N75410,1495,PLT,Ronald Ekers Space Station,Pluto,EAR,Humans United Space Station,Earth,1404,1949,1721 miles,Open
+RA,Rocket Airlines Inc.,N449UA,690,PLT,Ronald Ekers Space Station,Pluto,MAR,Musk Interplanetary Space Station,Mars,740,1117,1024 miles,Open
+RA,Rocket Airlines Inc.,N849UA,636,PLT,Ronald Ekers Space Station,Pluto,MER,Mariner 10 Station,Mercury,604,1432,2402 miles,Open
+RA,Rocket Airlines Inc.,N75436,1581,PLT,Ronald Ekers Space Station,Pluto,MOO,Armstrong Space Station,Moon,1339,1941,1874 miles,Open
+RA,Rocket Airlines Inc.,N841UA,357,PLT,Ronald Ekers Space Station,Pluto,SAT,Dione Space Station,Saturn,1652,1917,954 miles,Open
+RA,Rocket Airlines Inc.,,173,JUP,IO Space Station,Jupiter,VEN,Galileo Space Station,Venus,855,1122,2419 miles,Open
+RA,Rocket Airlines Inc.,,435,JUP,IO Space Station,Jupiter,EAR,Humans United Space Station,Earth,749,828,589 miles,Open
+RA,Rocket Airlines Inc.,,95,JUP,IO Space Station,Jupiter,PLT,Ronald Ekers Space Station,Pluto,1829,2103,2306 miles,Open
+RA,Rocket Airlines Inc.,,919,JUP,IO Space Station,Jupiter,MAR,Musk Interplanetary Space Station,Mars,1819,2019,1464 miles,Open
+RA,Rocket Airlines Inc.,,1790,JUP,IO Space Station,Jupiter,URA,Voyager II Space Station,Uranus,1814,1922,288 miles,Open
+RA,Rocket Airlines Inc.,,36,JUP,IO Space Station,Jupiter,MER,Mariner 10 Station,Mercury,1613,1751,213 miles,Open
+RA,Rocket Airlines Inc.,,59,JUP,IO Space Station,Jupiter,SAT,Dione Space Station,Saturn,1718,1953,2288 miles,Open
+RA,Rocket Airlines Inc.,N995UA,1041,JUP,IO Space Station,Jupiter,MOO,Armstrong Space Station,Moon,1710,1932,1190 miles,Open
+RA,Rocket Airlines Inc.,,537,URA,Voyager II Space Station,Uranus,EAR,Humans United Space Station,Earth,1422,1447,316 miles,Open
+RA,Rocket Airlines Inc.,,483,URA,Voyager II Space Station,Uranus,MAR,Musk Interplanetary Space Station,Mars,925,,1201 miles,Open
+RA,Rocket Airlines Inc.,,1924,URA,Voyager II Space Station,Uranus,JUP,IO Space Station,Jupiter,1541,1641,288 miles,Open
+RA,Rocket Airlines Inc.,N17620,1155,URA,Voyager II Space Station,Uranus,NPT,Triton Space Station,Neptune,840,1129,895 miles,Open
+RA,Rocket Airlines Inc.,N11612,114,URA,Voyager II Space Station,Uranus,MER,Mariner 10 Station,Mercury,1651,1827,404 miles,Open
+RA,Rocket Airlines Inc.,N19621,1609,URA,Voyager II Space Station,Uranus,MOO,Armstrong Space Station,Moon,1214,1359,1091 miles,Open
+RA,Rocket Airlines Inc.,N75854,1616,URA,Voyager II Space Station,Uranus,SAT,Dione Space Station,Saturn,840,1109,2052 miles,Open
+RA,Rocket Airlines Inc.,N27213,1637,URA,Voyager II Space Station,Uranus,VEN,Galileo Space Station,Venus,853,1119,2161 miles,Open
+RA,Rocket Airlines Inc.,N57863,73,URA,Voyager II Space Station,Uranus,PLT,Ronald Ekers Space Station,Pluto,827,1049,2021 miles,Open
+RA,Rocket Airlines Inc.,N27239,1774,MAR,Musk Interplanetary Space Station,Mars,MER,Mariner 10 Station,Mercury,1120,1652,1605 miles,Open
+RA,Rocket Airlines Inc.,N33284,268,MAR,Musk Interplanetary Space Station,Mars,VEN,Galileo Space Station,Venus,1031,1152,967 miles,Open
+RA,Rocket Airlines Inc.,N68807,344,MAR,Musk Interplanetary Space Station,Mars,JUP,IO Space Station,Jupiter,1750,2247,1452 miles,Open
+RA,Rocket Airlines Inc.,N411UA,457,MAR,Musk Interplanetary Space Station,Mars,EAR,Humans United Space Station,Earth,1411,1732,888 miles,Open
+RA,Rocket Airlines Inc.,N27903,544,MAR,Musk Interplanetary Space Station,Mars,MOO,Armstrong Space Station,Moon,1503,1811,862 miles,Open
+RA,Rocket Airlines Inc.,N461UA,744,MAR,Musk Interplanetary Space Station,Mars,SAT,Dione Space Station,Saturn,1412,1534,862 miles,Open
+RA,Rocket Airlines Inc.,N401UA,208,MAR,Musk Interplanetary Space Station,Mars,NPT,Triton Space Station,Neptune,805,1336,1546 miles,Open
+RA,Rocket Airlines Inc.,N68801,948,MAR,Musk Interplanetary Space Station,Mars,PLT,Ronald Ekers Space Station,Pluto,1534,1712,1024 miles,Open
+RA,Rocket Airlines Inc.,N38268,1092,MAR,Musk Interplanetary Space Station,Mars,URA,Voyager II Space Station,Uranus,1541,2022,1201 miles,Open

@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const routes = require("./app/routes");
-const dbConfig = require("./app/config/db.config.js");
+const routes = require("./routes");
+const dbConfig = require("./config/db.config.js");
 
 var corsOptions = {
 	origin: "http://localhost:8081"
@@ -16,10 +16,6 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/", (req,res) => {
-	res.json({message: "Welcome to the application!"});
-});
 app.use("/", routes);
 
 
