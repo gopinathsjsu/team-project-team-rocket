@@ -12,7 +12,7 @@ const FlightSchema = new Schema({
 		destination_code: {type: String, required:true},
 		destination_airport: {type: String, required:true},
 		destination: {type: String, required:true},
-		departure_time: {type: Date, required:true},
+		departure_time: {type: String, required:true},
 		arrival_time: {type: Date, required:true},
 		distance: {type: String, required:true},
 		status: {type: String, required:true, default:"Open"},
