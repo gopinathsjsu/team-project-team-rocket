@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import SignUp from './components/SignUp';
 import ContactInfo from './components/ContactInfo';
 import SignIn from './components/SignIn';
+import ESignIn from './components/ESignIn';
 import Flightdetail from './components/Flightdetail';
 import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/Signup' component={SignUp} />
         <Route exact path='/Contactinfo' component={ContactInfo} />
         <Route path='/Signin' component={SignIn} />
+        <Route path='/ESignin' component={ESignIn} />
         <Route exact path='/Flightdetail' component={Flightdetail} />
         <Route exact path='/Flightlist' component={FlightList} />
         <Route exact path='/' component={AppBar} />
