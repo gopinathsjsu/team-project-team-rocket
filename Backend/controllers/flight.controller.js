@@ -1,3 +1,4 @@
+const { query } = require("express");
 const Flight = require("../models/flights.model.js");
 
 // Create and save a new flight
@@ -48,9 +49,18 @@ exports.findByLocations = async (req, res) => {
 
 	const origin = req.body.origin;
 	const destination = req.body.destination;
+	const departure_time = req.body.departure_time;
+	let query = {};
+
+	if(departure_time != null){
+		query = {origin: origin, destination: destination, departure_time: departure_time}
+	}
+	else{
+		query = {origin: origin, destination: destination}
+	}
 
 	try {
-		const data = await Flight.find({origin: origin, destination: destination});
+		const data = await Flight.find(query);
 		res.send(data);
 	} catch(e) {
 		console.log(e);
