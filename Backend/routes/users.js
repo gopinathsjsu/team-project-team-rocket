@@ -6,7 +6,7 @@ const config = require('../config/database');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
-//Register
+// Register
 router.post('/register', function (req, res, next) {
   let newUser = new User({
     _id: req.body._id,
