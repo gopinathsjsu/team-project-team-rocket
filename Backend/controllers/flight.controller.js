@@ -1,6 +1,37 @@
 const { query } = require("express");
 const Flight = require("../models/flights.model.js");
 
+function populateSpaceshipSeats() {
+	const result = [];
+	for(let col = 0; col < 3; col++){
+		for(let row = 1; row <= 30; row++){
+			var seat = {};
+			switch(col){
+				case(0):
+				seat.seat_column = 'A';
+				break;
+				case(1):
+				seat.seat_column = 'B';
+				break;
+				case(2):
+				seat.seat_column = 'C';
+				break;
+			}
+			seat.seat_row = row;
+			if(row == 1){
+				seat.seat_class = "First";
+			}
+			else{
+				seat.seat_class = "Economy";
+			}
+			seat.isReserved = false;
+			result.push(seat);
+		}
+	}
+
+	return result;
+}
+
 // Create and save a new flight
 exports.create = async (req, res) => {
 	if(!req.body){
@@ -24,11 +55,11 @@ exports.create = async (req, res) => {
 		departure_time: req.body.departure_time,
 		arrival_time: req.body.arrival_time,
 		distance: req.body.distance,
-		status: req.body.status,
-		plane: req.body.plane
+		status: req.body.status
 	});
 
 	try{
+		flight.spaceship_seats = populateSpaceshipSeats();
 		const data = await flight.save(flight);
 		res.send(data);
 	} catch(e){
