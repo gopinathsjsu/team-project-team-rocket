@@ -1,44 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
-const Employee = require('../models/employee');
-const config = require('../config/database');
+const User = require('../models/users.model')
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 // Register
-router.post('/register', function (req, res, next) {
-  let newUser = new User({
-    _id: req.body._id,
-    username: req.body.username,
-    password: req.body.password
-  });
-  let newEmployee = new Employee({
-    _id: req.body._id,
-    name: req.body.name,
-    designation: req.body.designation,
-    mgr_id: req.body.mgr_id,
-    email: req.body.email,
-    contact: req.body.contact
-  });
+// router.post('/register', function (req, res, next) {
 
-  User.addUser(newUser, function (err, user) {
-    if (err) {
-      res.json({ success: "false", msg: "failed to register user" });
-    }
-    else {
-      res.json({ success: "true", msg: "registered user" });
-      /*Employee.addEmployee(newEmployee, function(err, employee) {
-          if (err) {
-              res.json({success:"false", msg:"failed to register employee"});
-          }
-          else {
-              res.json({success:"true", msg:"registered employee"});
-          }
-      });*/
-    }
-  });
-});
+// });
 
 //Authenticate
 router.post('/authenticate', function (req, res, next) {
