@@ -4,33 +4,34 @@ const Flight = require("../models/flights.model.js");
 function populateSpaceshipSeats() {
 	const result = [];
 	for(let col = 0; col < 3; col++){
-		for(let row = 1; row <= 30; row++){
+		for(let row = 1; row <= 10; row++){
 			var seat = {};
 			switch(col){
 				case(0):
 				seat.seat_column = 'A';
+				seat.seat_class = "First";
 				break;
 				case(1):
 				seat.seat_column = 'B';
+				seat.seat_class = "Economy";
 				break;
 				case(2):
 				seat.seat_column = 'C';
+				seat.seat_class = "Economy";
 				break;
 			}
 			seat.seat_row = row;
-			if(row == 1){
-				seat.seat_class = "First";
-			}
-			else{
-				seat.seat_class = "Economy";
-			}
 			seat.isReserved = false;
 			result.push(seat);
 		}
 	}
-
 	return result;
 }
+
+// function checkSeatAvailability(flight){
+// 	const available = false;
+// 	if(flight.space_seats)
+// }
 
 // Create and save a new flight
 exports.create = async (req, res) => {
@@ -81,17 +82,20 @@ exports.findByLocations = async (req, res) => {
 	const origin = req.body.origin;
 	const destination = req.body.destination;
 	const departure_time = req.body.departure_time;
+	const seat_class = req.body.seat_class || 'Economy';
+	const no_of_passangers = req.body.no_of_passangers || 1;
 	let query = {};
 
 	if(departure_time != null){
 		query = {origin: origin, destination: destination, departure_time: departure_time}
 	}
 	else{
-		query = {origin: origin, destination: destination}
+		query = {origin: origin, destination: destination, departure_time: departure_time, 'spaceship_seats.seat_class': seat_class }
 	}
 
 	try {
 		const data = await Flight.find(query);
+		console.log(data);
 		res.send(data);
 	} catch(e) {
 		console.log(e);
