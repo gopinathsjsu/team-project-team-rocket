@@ -6,6 +6,7 @@ import SignIn from './components/SignIn';
 import Flightdetail from './components/Flightdetail';
 import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
+import SelectSeat from './components/SelectSeat';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/Signin' component={SignIn} />
         <Route exact path='/Flightdetail' component={Flightdetail} />
         <Route exact path='/Flightlist' component={FlightList} />
+        <Route exact path='/Selectseat' component={SelectSeat} />
         <Route exact path='/' component={AppBar} />
         </Switch>
         <div  className="container"></div>
