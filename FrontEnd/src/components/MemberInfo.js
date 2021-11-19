@@ -132,7 +132,7 @@ export default function SignUp() {
         >
         
           <Typography component="h1" variant="h5">
-            <b>Contact Information</b>
+            <b>Member Contact Information</b>
           </Typography>
 
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>

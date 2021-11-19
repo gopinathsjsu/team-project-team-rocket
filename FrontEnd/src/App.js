@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import SignUp from './components/SignUp';
 import ContactInfo from './components/ContactInfo';
+import MemberInfo from './components/MemberInfo';
 import SignIn from './components/SignIn';
 import ESignIn from './components/ESignIn';
 import Flightdetail from './components/Flightdetail';
@@ -9,6 +10,7 @@ import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
 import SelectSeat from './components/SelectSeat';
 import './App.css';
+import MSignUp from './components/MSignup';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Route exact path='/Contactinfo' component={ContactInfo} />
         <Route path='/Signin' component={SignIn} />
         <Route path='/ESignin' component={ESignIn} />
+        <Route path='/MSignup' component={MSignUp} />
+        <Route path='/MemberInfo' component={MemberInfo} />
         <Route exact path='/Flightdetail' component={Flightdetail} />
         <Route exact path='/Flightlist' component={FlightList} />
         <Route exact path='/Selectseat' component={SelectSeat} />
