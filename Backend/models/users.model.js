@@ -10,7 +10,8 @@ const UserSchema = new Schema({
     city: { type: String },
     zip: { type: Number },
     dob: { type: Date },
-    passport: { type: String }
+    passport: { type: String },
+    miles: { type: Number }
 },
     { timestamps: true }
 );
