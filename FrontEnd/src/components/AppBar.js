@@ -23,8 +23,9 @@ export default function ButtonAppBar() {
       height: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundAttachment:"fixed", backgroundPosition:"center"
     }}>
       
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}} >
       <AppBar position="static">
+        
         <Toolbar>
          
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -32,7 +33,9 @@ export default function ButtonAppBar() {
           </Typography>
           <Button onClick={navigateToLogin}  color="inherit">Sign In</Button>
         </Toolbar>
+        
       </AppBar>
+      
       <Flightdetails />
     </Box>
    </div> 

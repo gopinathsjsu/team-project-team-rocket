@@ -26,6 +26,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import history from "../helpers/history";
+import Header from './Header';
 
 <text>Start your MileagePlus adventure by creating an account. Our MileagePlus loyalty program is free to join and rewards you with miles when you fly and when you enjoy everyday activities and experiences.
 
@@ -54,6 +55,9 @@ export default function SignUp() {
     console.log("On navigate button click assasasa");
     history.push("/ContactInfo");
 }
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -71,6 +75,7 @@ export default function SignUp() {
   return (
     
     <ThemeProvider theme={theme}>
+      <Header/>
       <Container component="main" maxWidth="xs">
         
         <CssBaseline />
@@ -143,7 +148,18 @@ export default function SignUp() {
               />
               </LocalizationProvider>
               </Grid>
-
+              <Grid item xs={12}>
+              <FormLabel component="legend">Passport Number:*</FormLabel><br></br>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Passport Number"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+                <br></br>
+              </Grid>
             </Grid>
             <Grid>
             <Button

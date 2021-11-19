@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { makeStyles } from '@mui/styles';
-
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import history from "../helpers/history";
+import Header from './Header';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const columns = [
   {
@@ -21,6 +26,7 @@ const columns = [
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
     width: 300,
+    
   },
   {
     field: 'date',
@@ -43,15 +49,30 @@ const useStyles = makeStyles({
   },
 });
 
+const navigateToSelectSeat=()=>{
+  console.log("On navigate button click assasasa");
+  history.push("/SelectSeat");
+}
+
+const theme = createTheme();
+
 export default function StylingHeaderGrid() {
   const classes = useStyles();
 
   return (
-
     
-
+    <ThemeProvider theme={theme}>
+      <Header/>
+    <Box
+      pt={15}
+    >
     <div style={{ height: 300, width: '100%' }} className={classes.root}>
-      <DataGrid rows={flightArr} columns={columns} />
+      <DataGrid rows={flightArr} columns={columns}  />
+      <FormControl>
+            <Button onClick={navigateToSelectSeat} variant="contained">Select</Button>
+            </FormControl>
     </div>
+    </Box>
+    </ThemeProvider>
   );
 }

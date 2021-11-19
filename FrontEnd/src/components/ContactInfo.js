@@ -35,7 +35,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
-
+import Header from './Header';
 
 function Copyright(props) {
   return (
@@ -119,6 +119,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Header/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

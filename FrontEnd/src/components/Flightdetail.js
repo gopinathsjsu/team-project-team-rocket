@@ -32,6 +32,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import history from "../helpers/history";
+import axios from 'axios';
 
 /*import './Flightdetail.css';*/
 
@@ -88,7 +89,7 @@ export default function FloatingActionButtonZoom() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [dateValue, setDateValue] = React.useState([null,null]);
-
+  const [tripType,setTripType]=React.useState("oneWay")
   const [select, setSelect] = React.useState('');
 
   const handleChange1 = (event) => {
@@ -104,6 +105,11 @@ export default function FloatingActionButtonZoom() {
     setValue(index);
   };
 
+  const onTripTypeSelect=(e)=>{
+    console.log("printing type",e.target.value)
+    setTripType(e.target.value)
+  }
+
   const navigateToFlightlist=()=>{
     console.log("On navigate button click assasasa");
     history.push("/Flightlist");
@@ -113,6 +119,8 @@ export default function FloatingActionButtonZoom() {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
+
+  
 
   const fabs = [
     {
@@ -172,9 +180,9 @@ export default function FloatingActionButtonZoom() {
             <FormControl component="fieldset">
                 <FormLabel style ={{fontWeight: 600}} component="legend">Flight</FormLabel>
                 <br></br>
-            <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
-                <FormControlLabel value="female" control={<Radio />} label="Roundtrip" />
-                <FormControlLabel value="male" control={<Radio />} label="One-way" />      
+            <RadioGroup onChange={onTripTypeSelect} defaultValue="oneWay" row aria-label="gender" name="row-radio-buttons-group">
+                <FormControlLabel value="twoWay" control={<Radio />} label="Roundtrip" />
+                <FormControlLabel value="oneWay" control={<Radio />} label="One-way" />      
             </RadioGroup>
 
             <div>
@@ -188,8 +196,9 @@ export default function FloatingActionButtonZoom() {
             <FormControl>
             <FormLabel component="legend">Date</FormLabel>
                 <br></br>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
+            {tripType=="twoWay"?
                 <DesktopDateRangePicker
                   startText="Start Date"
                   value={dateValue}
@@ -204,7 +213,20 @@ export default function FloatingActionButtonZoom() {
                     </React.Fragment>
                   )}
                 />
-              </Stack> 
+              
+:
+<DesktopDatePicker
+          
+          inputFormat="MM/dd/yyyy"
+          value={new Date()}
+          onChange={handleChange}
+          renderInput={(newValue) => {
+            setDateValue(newValue);
+          }}
+          renderInput={(params) => <TextField {...params} />}
+        />
+                              }
+                              </Stack> 
             </LocalizationProvider>
             </FormControl>
             <br></br><br></br>        
@@ -220,8 +242,8 @@ export default function FloatingActionButtonZoom() {
               >
                 
                 <MenuItem value={10}>Economy</MenuItem>
-                <MenuItem value={20}>Premium Economy</MenuItem>
-                <MenuItem value={30}>Business ot First class</MenuItem>
+        
+                <MenuItem value={20}>Business or First class</MenuItem>
               </Select>
             </FormControl>
             <br></br><br></br>
@@ -256,6 +278,10 @@ export default function FloatingActionButtonZoom() {
       </SwipeableViews>
       
     </Box>
+    <div style={{
+      backgroundImage: 'url("https://wallpaperaccess.com/full/254361.jpg")',
+      height: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundAttachment:"fixed", backgroundPosition:"center"
+    }}></div>
     </Box>
   );
 }

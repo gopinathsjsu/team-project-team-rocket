@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import SeatRow from "./SeatRow";
 import "./styles.css";
+import history from "../helpers/history";
+import Header from './Header';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 const seatMap = {};
 for (let i = 1; i <= 17; i++) {
@@ -13,6 +17,13 @@ for (let i = 1; i <= 17; i++) {
     }
   });
 }
+
+const navigateToBack=()=>{
+  console.log("On navigate button click assasasa");
+  history.push("/FlightList");
+}
+
+const theme = createTheme();
 
 async function submitToAda(selectedSeat) {
   if (!window.location.search) {
@@ -47,8 +58,10 @@ export default function App() {
   const [selectedSeat, setSelectedSeat] = useState(null);
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>  
+    <div className="App">  
       <div className="plane-map-header">
+      <Header/>
         <h1>San Francisco (SFO) to Mumbai (BOM)</h1>
         <h2>Select your preferred seat</h2>
       </div>
@@ -68,14 +81,8 @@ export default function App() {
       <div className="plane-map-footer">
         <button
           className="button back"
-          onClick={() => {
-            console.log("attempting to close.");
-            WebviewSdk.close(
-              () => console.log("close success!"),
-              (e) => console.log("close failure", e)
-            );
-          }}
-        >
+          onClick={navigateToBack}
+          variant="contained">
           Back
         </button>
         <button
@@ -97,5 +104,6 @@ export default function App() {
         </button>
       </div>
     </div>
+    </ThemeProvider>
   );
 }
