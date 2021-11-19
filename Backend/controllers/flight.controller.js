@@ -81,16 +81,16 @@ exports.findByLocations = async (req, res) => {
 
 	const origin = req.body.origin;
 	const destination = req.body.destination;
-	const departure_time = req.body.departure_time;
+	const departure_date = req.body.departure_date;
 	const seat_class = req.body.seat_class || 'Economy';
 	const no_of_passangers = req.body.no_of_passangers || 1;
 	let query = {};
 
-	if(departure_time != null){
-		query = {origin: origin, destination: destination, departure_time: departure_time}
+	if(departure_date != null){
+		query = {origin: origin, destination: destination, departure_date: departure_date}
 	}
 	else{
-		query = {origin: origin, destination: destination, departure_time: departure_time, 'spaceship_seats.seat_class': seat_class }
+		query = {origin: origin, destination: destination, 'spaceship_seats.seat_class': seat_class }
 	}
 
 	try {
