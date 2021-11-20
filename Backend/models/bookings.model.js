@@ -5,7 +5,9 @@ const BookingSchema = new Schema({
     user_id: { type: String },
     flight_id: { type: String },
     status: { type: String },
-    booking_date: { type: Date }
+    booking_date: { type: Date },
+    seat: { type: String },
+    price: { type: String }
 },
     { timestamps: true }
 );
