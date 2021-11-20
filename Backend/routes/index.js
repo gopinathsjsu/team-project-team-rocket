@@ -1,11 +1,16 @@
-const router = require("express").Router();
-const flightsController = require("../controllers/flight.controller.js");
+const router = require('express').Router();
+const flight = require('../controllers/flight.controller.js');
 const user = require('../controllers/user.controller');
+const booking = require('../controllers/booking.controller');
 
 router.post('/user/register', user.register);
 router.post('/user/login', user.login);
 
-router.post("/flights", flightsController.create);
-router.get("/flights", flightsController.findByLocations);
+router.post('/flights', flight.create);
+router.get('/flights', flight.findByLocations);
+
+router.post('/booking', booking.create);
+router.get('/booking/user', booking.getBookingByUser);
+router.get('/booking/flight', booking.getBookingByFlight);
 
 module.exports = router;
