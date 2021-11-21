@@ -32,6 +32,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import history from "../helpers/history";
+import FlightList from "./FlightList";
 import axios from 'axios';
 
 /*import './Flightdetail.css';*/
@@ -92,6 +93,11 @@ export default function FloatingActionButtonZoom() {
   const [tripType,setTripType]=React.useState("oneWay")
   const [select, setSelect] = React.useState('');
 
+  const [origin, setOrigin] = React.useState('');
+  const [destination, setDestination] = React.useState('');
+  const [loadFlightList,setLoadFlightCompo]=React.useState(false);
+  const [flightList,setFlightList]=React.useState([]);
+
   const handleChange1 = (event) => {
     setSelect(event.target.value);
   };
@@ -110,8 +116,21 @@ export default function FloatingActionButtonZoom() {
     setTripType(e.target.value)
   }
 
-  const navigateToFlightlist=()=>{
+  const navigateToFlightlist=async ()=>{
     console.log("On navigate button click assasasa");
+    console.log(origin,destination)
+    if(origin && destination )
+    {
+      console.log("Inside navigate flight list call")
+    let response = await axios.get("http://localhost:8080/flights?origin="+origin+"&destination="+destination+"&departure_date=20211228")
+      console.log("response= ",response)
+      setFlightList(response.data);
+      setLoadFlightCompo(true)
+    }
+    else
+    {
+      console.log("Enter all the important");
+    }
     history.push("/Flightlist");
 }
 
@@ -142,7 +161,8 @@ export default function FloatingActionButtonZoom() {
       label: 'Expand',
     },
   ];
-
+if(!loadFlightList)
+{
   return (
     <Box
       pt={25}
@@ -181,14 +201,14 @@ export default function FloatingActionButtonZoom() {
                 <FormLabel style ={{fontWeight: 600}} component="legend">Flight</FormLabel>
                 <br></br>
             <RadioGroup onChange={onTripTypeSelect} defaultValue="oneWay" row aria-label="gender" name="row-radio-buttons-group">
-                <FormControlLabel value="twoWay" control={<Radio />} label="Roundtrip" />
-                <FormControlLabel value="oneWay" control={<Radio />} label="One-way" />      
+                <FormControlLabel value="twoWay"  control={<Radio />} label="Roundtrip" />
+                <FormControlLabel value="oneWay"  control={<Radio />} label="One-way" />      
             </RadioGroup>
 
             <div>
-                <TextField id="standard-basic" label="From*" variant="standard" />
+                <TextField id="standard-basic" onChange={(e)=>{setOrigin(e.target.value)}} label="From*" variant="standard" />
                  &nbsp;&nbsp;&nbsp;
-                 <TextField id="standard-basic" label="To*" variant="standard" />    
+                 <TextField id="standard-basic" onChange={(e)=>{setDestination(e.target.value)}} label="To*" variant="standard" />    
             </div>
             </FormControl>
             <br></br><br></br>
@@ -249,7 +269,7 @@ export default function FloatingActionButtonZoom() {
             <br></br><br></br>
 
             <FormControl>
-            <Button onClick={navigateToFlightlist} variant="contained">Find Flights</Button>
+            <Button onClick={async ()=>{await navigateToFlightlist()}} variant="contained">Find Flights</Button>
             </FormControl>
 
         </TabPanel>
@@ -284,4 +304,8 @@ export default function FloatingActionButtonZoom() {
     }}></div>
     </Box>
   );
+}
+else{
+  return (<FlightList flightList={flightList}/>)
+}
 }

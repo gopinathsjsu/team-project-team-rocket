@@ -7,16 +7,17 @@ import Box from '@mui/material/Box';
 import history from "../helpers/history";
 import Header from './Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const columns = [
   {
-    field: 'departure',
+    field: 'origin',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
     width: 300,
   },
   {
-    field: 'arrival',
+    field: 'destination',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
     width: 300,
@@ -29,7 +30,7 @@ const columns = [
     
   },
   {
-    field: 'date',
+    field: 'departure_date',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
     width: 300,
@@ -37,7 +38,20 @@ const columns = [
 ];
 
 
-    let flightArr=[{id:1, departure:"United ",arrival:"Mumbai",price:"1000 $", date:"10-11-2021"}];
+    /*flightArr = axios.get('local:8080/flight/')
+    let flightArr=[{id:1, departure:"United ",arrival:"Mumbai",price:"1000 $", date:"10-11-2021"},
+    {id:2, departure:"United ",arrival:"Mumbai",price:"1000 $", date:"10-11-2021"},
+  ];
+
+  componentDidMount() {
+    axios.get('http://localhost:8080/flight')
+        .then(res => {
+            this.setState({ usersCollection: res.data });
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}*/
 
 const useStyles = makeStyles({
   root: {
@@ -56,8 +70,9 @@ const navigateToSelectSeat=()=>{
 
 const theme = createTheme();
 
-export default function StylingHeaderGrid() {
+export default function StylingHeaderGrid(props) {
   const classes = useStyles();
+  let flightArr=props.flightList;
 
   return (
     
@@ -67,7 +82,7 @@ export default function StylingHeaderGrid() {
       pt={15}
     >
     <div style={{ height: 300, width: '100%' }} className={classes.root}>
-      <DataGrid rows={flightArr} columns={columns}  />
+      <DataGrid rows={flightArr} getRowId={(row) => row._id} columns={columns}  />
       <FormControl>
             <Button onClick={navigateToSelectSeat} variant="contained">Select</Button>
             </FormControl>
