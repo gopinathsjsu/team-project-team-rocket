@@ -5,7 +5,7 @@ const routes = require("./routes");
 const dbConfig = require("./config/db.config.js");
 
 var corsOptions = {
-	origin: "http://localhost:3000"
+	origin: "*"
 };
 
 const app = express();
