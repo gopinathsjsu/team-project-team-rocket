@@ -73,7 +73,7 @@ exports.findByLocations = async (req, res) => {
 	const destination = params.destination;
 	const departure_date = params.departure_date;
 	const seat_class = params.seat_class || 'Economy';
-	const no_of_passangers = params.no_of_passangers || 1;
+	const num_passengers = params.num_passengers || 1;
 	let query = {};
 
 	if (departure_date != null) {
