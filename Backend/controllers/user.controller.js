@@ -19,6 +19,8 @@ exports.register = async (req, res) => {
         passport: req.body.passport
     });
 
+    console.log("Printing user",user);
+
     try {
         const data = await user.save();
         res.send(data);
@@ -42,9 +44,9 @@ exports.login = async (req, res) => {
     const query = { email: email, password: password }
     try {
         const user = await User.find(query);
-        console.log(user);
-        if (!user.length) {
-            return res.json({ success: false, message: "Login failed" })
+        console.log("printing user=",user);
+        if (user.length==0) {
+            return res.status(400).send({ success: false, message: "Login failed" })
         }
         return res.json({ success: true, message: "jwt_token_202" })
     } catch (e) {

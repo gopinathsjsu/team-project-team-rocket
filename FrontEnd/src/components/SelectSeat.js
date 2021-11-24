@@ -90,12 +90,20 @@ export default function App() {
           id="confirm-button"
           disabled={!selectedSeat}
           onClick={async () => {
+            if(!JSON.parse(localStorage.getItem("authenticated")))
+            {
+              history.push("/SignIn")
+            }
+            else
+            {
             await submitToAda(selectedSeat);
             console.log("attempting to close.");
-            WebviewSdk.close(
-              () => console.log("close success!"),
-              (e) => console.log("close failure", e)
-            );
+            console.log(window)
+            // window.WebviewSdk.close(
+            //   () => console.log("close success!"),
+            //   (e) => console.log("close failure", e)
+            // );
+            }
           }}
         >
           <div className="lds-dual-ring" />

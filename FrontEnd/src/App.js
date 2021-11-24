@@ -9,6 +9,7 @@ import Flightdetail from './components/Flightdetail';
 import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
 import SelectSeat from './components/SelectSeat';
+import Payment from "./components/Payment";
 import './App.css';
 import MSignUp from './components/MSignup';
 
@@ -33,6 +34,8 @@ function App() {
         <Route exact path='/Flightdetail' component={Flightdetail} />
         <Route exact path='/Flightlist' component={FlightList} />
         <Route exact path='/Selectseat' component={SelectSeat} />
+        <Route exact path='/payment' component={Payment} />
+
         <Route exact path='/' component={AppBar} />
         </Switch>
         <div  className="container"></div>

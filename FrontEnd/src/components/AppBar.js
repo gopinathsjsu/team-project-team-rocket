@@ -13,6 +13,10 @@ import history from "../helpers/history";
 export default function ButtonAppBar() {
 
     const navigateToLogin=()=>{
+        if(JSON.parse(localStorage.getItem("authenticated")))
+        {
+          localStorage.setItem("authenticated",false);
+        }
         console.log("On navigate button click assasasa");
         history.push("/SignIn");
     }
@@ -31,7 +35,8 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Rocket Airline
           </Typography>
-          <Button onClick={navigateToLogin}  color="inherit">Sign In</Button>
+          {console.log(JSON.parse(localStorage.getItem("authenticated"))) }
+          <Button onClick={navigateToLogin}  color="inherit">{JSON.parse(localStorage.getItem("authenticated"))?"Sign Out":"Sign In"}</Button>
         </Toolbar>
         
       </AppBar>

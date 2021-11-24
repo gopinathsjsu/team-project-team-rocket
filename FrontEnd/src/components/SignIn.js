@@ -13,6 +13,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
+import axios from 'axios';
+import history from "../helpers/history";
+
+
 
 
 function Copyright(props) {
@@ -34,7 +38,8 @@ export default function SignIn() {
 
   console.log("inside signin");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    try{
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
@@ -42,6 +47,22 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+   let response= await axios.post("http://localhost:8080/user/login",{
+      email: data.get('email'),
+      password: data.get('password'),
+    },{headers:{"Content-Type":"application/json"}})
+    localStorage.setItem("authenticated",true);
+    console.log("user",response.data)
+    localStorage.setItem("user",JSON.stringify(response.data))
+    history.push("/")
+  }
+  catch(error)
+  {
+    console.log(error.message)
+    alert(error)
+  }
+
   };
 
   return (
@@ -64,7 +85,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={async (event)=>{await handleSubmit(event)}} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

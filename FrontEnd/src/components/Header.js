@@ -17,6 +17,10 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 export default function ButtonAppBar() {
 
     const navigateToLogin=()=>{
+        if(JSON.parse(localStorage.getItem("authenticated")))
+        {
+          localStorage.setItem("authenticated",false);
+        }
         console.log("On navigate button click assasasa");
         history.push("/SignIn");
     }
@@ -69,7 +73,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
          <Button onClick={navigateToHeader} color="inherit" > Rocket Airline </Button>
           </Typography>
-          <Button onClick={navigateToLogin}  color="inherit">Sign In</Button>
+          <Button onClick={navigateToLogin}  color="inherit">{JSON.parse(localStorage.getItem("authenticated"))?"Sign Out":"Sign In"}</Button>
           {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}><DehazeIcon style={{color:"white"}}/></Button>
