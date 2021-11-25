@@ -8,8 +8,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const seatMap = {};
-for (let i = 1; i <= 17; i++) {
-  ["A", "B", "C", "D", "E", "F"].forEach((letter) => {
+for (let i = 1; i <= 10; i++) {
+  ["A", "B", "C"].forEach((letter) => {
     if (seatMap[i]) {
       seatMap[i][letter] = Math.random() < 0.3;
     } else {
