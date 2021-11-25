@@ -9,31 +9,46 @@ import Header from './Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 
+
 const columns = [
+  { field: 'id', headerName: 'ID', width: 50 },
+  {
+    field: 'departure_time',
+    headerName: 'Departure Time',
+    type: 'time',
+    headerClassName: 'super-app-theme--header',
+    width: 200,
+  },
   {
     field: 'origin',
+    headerName: 'Origin',
     headerClassName: 'super-app-theme--header',
-    headerAlign: 'center',
-    width: 300,
+    width: 200,
+  },
+  {
+    field: 'arrival_time',
+    headerName: 'Arrival Time',
+    headerClassName: 'super-app-theme--header',
+    width: 200,
   },
   {
     field: 'destination',
+    headerName: 'Destination',
     headerClassName: 'super-app-theme--header',
-    headerAlign: 'center',
-    width: 300,
+    width: 200,
   },
   {
     field: 'price',
+    headerName: 'Price',
     headerClassName: 'super-app-theme--header',
-    headerAlign: 'center',
-    width: 300,
+    width: 100,
     
   },
   {
     field: 'departure_date',
+    headerName: 'Departure Date',
     headerClassName: 'super-app-theme--header',
-    headerAlign: 'center',
-    width: 300,
+    width: 200,
   },
 ];
 
@@ -65,7 +80,9 @@ const useStyles = makeStyles({
 
 const navigateToSelectSeat=()=>{
   console.log("On navigate button click assasasa");
-  history.push("/SelectSeat");
+  //if(getRowId>0){
+    history.push("/SelectSeat");
+  //}
 }
 
 const theme = createTheme();
@@ -73,6 +90,7 @@ const theme = createTheme();
 export default function StylingHeaderGrid(props) {
   const classes = useStyles();
   let flightArr=props.flightList;
+  //console.log("FlightArray = " + flightArr);
 
   return (
     
@@ -81,7 +99,7 @@ export default function StylingHeaderGrid(props) {
     <Box
       pt={15}
     >
-    <div style={{ height: 300, width: '100%' }} className={classes.root}>
+    <div style={{ height: 200, width: '100%' }} className={classes.root}>
       <DataGrid rows={flightArr} getRowId={(row) => row._id} columns={columns}  />
       <FormControl>
             <Button onClick={navigateToSelectSeat} variant="contained">Select</Button>
