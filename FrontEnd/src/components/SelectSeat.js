@@ -54,15 +54,17 @@ async function submitToAda(selectedSeat) {
   });
 }
 
-export default function App() {
+export default function App(props) {
   const [selectedSeat, setSelectedSeat] = useState(null);
+  let flightArr=props.flightList;
 
   return (
     <ThemeProvider theme={theme}>  
     <div className="App">  
       <div className="plane-map-header">
       <Header/>
-        <h1>San Francisco (SFO) to Mumbai (BOM)</h1>
+        {/* <h1>San Francisco (SFO) to Mumbai (BOM)</h1> */}
+        <h1>{flightArr.origin}</h1>
         <h2>Select your preferred seat</h2>
       </div>
       <div className="plane">
