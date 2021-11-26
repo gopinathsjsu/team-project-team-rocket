@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import React, { useState, useCallback } from 'react'
+import { DataGrid, GridColDef, GridApi, GridCellValue } from '@mui/x-data-grid';
 import { makeStyles } from '@mui/styles';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
@@ -10,8 +10,23 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 
 
+
 const columns = [
-  { field: 'id', headerName: 'ID', width: 50 },
+  {
+    field: 'action',
+    headerName: 'Action',
+    headerClassName: 'super-app-theme--header',
+    sortable: false,
+    renderCell: (params) => {
+      const onClick = (e) => {
+        e.stopPropagation(); // don't select this row after clicking
+
+        return history.push("/SelectSeat");
+      };
+
+      return <Button onClick={onClick}>CLICK</Button>;
+    },
+  },
   {
     field: 'departure_time',
     headerName: 'Departure Time',
@@ -78,19 +93,15 @@ const useStyles = makeStyles({
   },
 });
 
-const navigateToSelectSeat=()=>{
-  console.log("On navigate button click assasasa");
-  //if(getRowId>0){
-    history.push("/SelectSeat");
-  //}
-}
+
 
 const theme = createTheme();
+
 
 export default function StylingHeaderGrid(props) {
   const classes = useStyles();
   let flightArr=props.flightList;
-  //console.log("FlightArray = " + flightArr);
+
 
   return (
     
@@ -100,10 +111,14 @@ export default function StylingHeaderGrid(props) {
       pt={15}
     >
     <div style={{ height: 200, width: '100%' }} className={classes.root}>
-      <DataGrid rows={flightArr} getRowId={(row) => row._id} columns={columns}  />
-      <FormControl>
-            <Button onClick={navigateToSelectSeat} variant="contained">Select</Button>
-            </FormControl>
+      <DataGrid rows={flightArr}
+      getRowId={(row) => row._id} 
+      columns={columns}
+
+      />
+      {/* <FormControl>
+            <Button onClick={selected == null ? 'none' : navigateToSelectSeat} variant="contained">Select</Button>
+            </FormControl> */}
     </div>
     </Box>
     </ThemeProvider>
