@@ -107,10 +107,15 @@ export default function FloatingActionButtonZoom() {
   }
 
   const navigateToFlightlist = async () => {
-    const month = datePickerValue.getMonth() + 1;
-    const date = datePickerValue.getDate();
-    const year = datePickerValue.getFullYear();
-    const departureDate = year.toString() + month.toString()  + date.toString();
+    var month = datePickerValue.getMonth() + 1;
+    var day = datePickerValue.getDate();
+    var year = datePickerValue.getFullYear();
+    if (day.toString().length < 2) 
+        day = '0' + day.toString();
+    if (month.toString().length < 2) 
+        month = '0' + month.toString();
+    const departureDate = year.toString() + month.toString()  + day.toString();
+    console.log(departureDate);
     if (origin && destination) {
       let response = await axios.get("http://localhost:8080/flights?origin=" + origin + "&destination=" + destination + "&departure_date=" + departureDate);
       console.log("response= ", response)
