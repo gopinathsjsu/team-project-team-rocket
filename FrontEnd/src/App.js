@@ -10,6 +10,8 @@ import FlightList from './components/FlightList';
 import AppBar from './components/AppBar';
 import SelectSeat from './components/SelectSeat';
 import Payment from "./components/Payment";
+import Review from "./components/Review";
+import Checkout from "./components/Checkout";
 import './App.css';
 import MSignUp from './components/MSignup';
 
@@ -35,6 +37,8 @@ function App() {
         <Route exact path='/Flightlist' component={FlightList} />
         <Route exact path='/Selectseat' component={SelectSeat} />
         <Route exact path='/payment' component={Payment} />
+        <Route exact path='/checkout' component={Checkout} />
+        <Route exact path='/review' component={Review} />
 
         <Route exact path='/' component={AppBar} />
         </Switch>
