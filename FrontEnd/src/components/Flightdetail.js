@@ -28,6 +28,7 @@ import Button from '@mui/material/Button';
 import history from "../helpers/history";
 import FlightList from "./FlightList";
 import axios from 'axios';
+import moment from 'moment';
 
 /*import './Flightdetail.css';*/
 
@@ -107,10 +108,7 @@ export default function FloatingActionButtonZoom() {
   }
 
   const navigateToFlightlist = async () => {
-    const month = datePickerValue.getMonth() + 1;
-    const date = datePickerValue.getDate();
-    const year = datePickerValue.getFullYear();
-    const departureDate = year.toString() + month.toString()  + date.toString();
+    const departureDate = moment(datePickerValue).format('YYYYMMDD');
     if (origin && destination) {
       let response = await axios.get("http://localhost:8080/flights?origin=" + origin + "&destination=" + destination + "&departure_date=" + departureDate);
       console.log("response= ", response)
