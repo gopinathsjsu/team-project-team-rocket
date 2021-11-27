@@ -8,8 +8,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const seatMap = {};
-for (let i = 1; i <= 17; i++) {
-  ["A", "B", "C", "D", "E", "F"].forEach((letter) => {
+for (let i = 1; i <= 10; i++) {
+  ["A", "B", "C"].forEach((letter) => {
     if (seatMap[i]) {
       seatMap[i][letter] = Math.random() < 0.3;
     } else {
@@ -54,15 +54,17 @@ async function submitToAda(selectedSeat) {
   });
 }
 
-export default function App() {
+export default function App(props) {
   const [selectedSeat, setSelectedSeat] = useState(null);
+  let flightArr=props.flightList;
 
   return (
     <ThemeProvider theme={theme}>  
     <div className="App">  
       <div className="plane-map-header">
       <Header/>
-        <h1>San Francisco (SFO) to Mumbai (BOM)</h1>
+        {/* <h1>San Francisco (SFO) to Mumbai (BOM)</h1> */}
+        <h1>{flightArr.origin}</h1>
         <h2>Select your preferred seat</h2>
       </div>
       <div className="plane">
