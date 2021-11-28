@@ -85,7 +85,6 @@ exports.findByLocations = async (req, res) => {
 
 	try {
 		const data = await Flight.find(query);
-		console.log(data);
 		res.send(data);
 	} catch (e) {
 		console.log(e);
