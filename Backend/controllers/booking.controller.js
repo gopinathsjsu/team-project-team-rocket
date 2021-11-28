@@ -42,7 +42,6 @@ exports.getBookingByUser = async (req, res) => {
     const query = { user_id: url.parse(req.url, true).query.user_id };
     try {
         const bookings = await Booking.find(query);
-        console.log(bookings);
         return res.json(bookings);
     } catch (e) {
         console.log(e);
@@ -61,7 +60,6 @@ exports.getBookingByFlight = async (req, res) => {
     const query = { flight_id: url.parse(req.url, true).query.flight_id };
     try {
         const bookings = await Booking.find(query);
-        console.log(bookings);
         return res.json(bookings);
     } catch (e) {
         console.log(e);
