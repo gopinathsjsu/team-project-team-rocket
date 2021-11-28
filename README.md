@@ -1,17 +1,18 @@
 # team-project-team-rocket
-#Project Members List
-#Sakshi Deepak Kasat
-#Sudheendra Katikar
-#Aniruddha Arun Narkhede
-#Siddh Patel
+---
+## Project Members List
+1. Sakshi Deepak Kasat
+2. Sudheendra Katikar
+3. Aniruddha Arun Narkhede
+4. Siddh Patel
 
-# Tech-Stack
+## Tech-Stack
 1. Front End - React
 2. Back End - Node.JS
 3. Database - MongoDB
 4. Hosting - AWS - Elastic beanstalk
 
-# Instructions
+## Instructions
 
 1. Clone repo
 2. Install Node and Npm
