@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+    background-image: url('https://free4kwallpapers.com/uploads/originals/2020/05/31/-beautiful-sunset-with-a-rocket-wallpaper.png');
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
