@@ -8,6 +8,7 @@ router.post('/user/login', user.login);
 
 router.post('/flights', flight.create);
 router.get('/flights', flight.findByLocations);
+router.get('/flight/seats', flight.getSeatMap);
 
 router.post('/booking', booking.create);
 router.get('/booking/user', booking.getBookingByUser);

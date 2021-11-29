@@ -75,7 +75,6 @@ exports.findByLocations = async (req, res) => {
 	const seat_class = params.seat_class || 'Economy';
 	const num_passengers = params.num_passengers || 1;
 	let query = {};
-
 	if (departure_date != null) {
 		query = { origin: origin, destination: destination, departure_date: departure_date }
 	}
@@ -93,3 +92,18 @@ exports.findByLocations = async (req, res) => {
 		});
 	}
 };
+
+exports.getSeatMap = async (req, res) => {
+	const params = url.parse(req.url, true).query;
+	const _id = params._id;
+	query = { _id: _id };
+	try {
+		const data = await Flight.find(query);
+		res.send(data);
+	} catch (e) {
+		console.log(e);
+		res.status(500).send({
+			message: "Error on flight seatmap"
+		});
+	}
+}
