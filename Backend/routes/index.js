@@ -3,12 +3,12 @@ const flight = require('../controllers/flight.controller.js');
 const user = require('../controllers/user.controller');
 const booking = require('../controllers/booking.controller');
 
-router.post('/user/register', user.register);
+router.post('/user/signup', user.signup);
 router.post('/user/login', user.login);
 
 router.post('/flights', flight.create);
 router.get('/flights', flight.findByLocations);
-router.get('/flight/seats', flight.getSeatMap);
+router.get('/flights/seats', flight.getSeatMap);
 
 router.post('/booking', booking.create);
 router.get('/booking/user', booking.getBookingByUser);
