@@ -74,6 +74,26 @@ exports.getBookingByFlight = async (req, res) => {
     }
 }
 
+exports.update = async (req, res) => {
+    const params = url.parse(req.url, true).query;
+    const query = { _id: params.booking_id };
+    try {
+        const currentBooking = await Booking.findOne(query);
+        currentBooking.flight_id = params.flight_id;
+        currentBooking.booking_date = new Date();
+        const updatedBooking = await currentBooking.save();
+        if (updatedBooking == undefined) {
+            return res.json({ success: false, message: "There was an error. Try again" });
+        }
+        return res.json({ success: true, message: "Booking updated" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: "Error -> cancel booking"
+        });
+    }
+}
+
 exports.cancel = async (req, res) => {
     const params = url.parse(req.url, true).query;
     const query = { _id: params.booking_id };
