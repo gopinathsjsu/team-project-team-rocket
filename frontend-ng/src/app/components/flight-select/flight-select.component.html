@@ -1,40 +1,51 @@
 <div class="container">
+
   <mat-card>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="From..." value="{{searchForm.origin}}">
-    </mat-form-field>
-    <mat-icon>compare_arrows</mat-icon>&nbsp;&nbsp;
-    <mat-form-field>
-      <input matInput placeholder="To..." value="{{searchForm.destination}}">
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Outgoing</mat-label>
-      <input matInput [min]="minDate" [matDatepicker]="outgoing_picker">
-      <mat-datepicker-toggle matSuffix [for]="outgoing_picker"></mat-datepicker-toggle>
-      <mat-datepicker #outgoing_picker></mat-datepicker>
-    </mat-form-field>
-    <button class="btn btn-primary rounded-5" (click)="onSubmit()">
-      Update
-    </button>
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="origin" placeholder="From..." value="params.origin">
+      </mat-form-field>
+      <mat-icon>compare_arrows</mat-icon>&nbsp;&nbsp;
+      <mat-form-field>
+        <input matInput formControlName="destination" placeholder="To..." value="params.destination">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Outgoing</mat-label>
+        <input matInput formControlName="departure_date" [min]="minDate" [matDatepicker]="outgoing_picker">
+        <mat-datepicker-toggle matSuffix [for]="outgoing_picker"></mat-datepicker-toggle>
+        <mat-datepicker #outgoing_picker></mat-datepicker>
+      </mat-form-field>
+      <button class="btn btn-primary rounded-3">Update</button>
+    </form>
   </mat-card>
+
   <br><br>
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel *ngFor="let flight of flightList">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{ flight.origin_code }}&nbsp;<mat-icon>arrow_right_alt</mat-icon>&nbsp;{{ flight.destination_code }}
+          <div class="col-md-4">{{ flight.origin_code }}&nbsp;<mat-icon>arrow_right_alt</mat-icon>&nbsp;{{
+            flight.destination_code }}</div>
+          <div class="col-md-4">{{ getDate(flight.departure_date, flight.departure_time) }} - {{
+            getDate(flight.arrival_date, flight.arrival_time) }}</div>
+          <div class="col-md-4">
+            <mat-icon>$</mat-icon>{{ flight.price }}
+          </div>
         </mat-panel-title>
-        <mat-panel-description>
-          {{ getDate(flight.departure_date, flight.departure_time) }} - {{
-          getDate(flight.arrival_date, flight.arrival_time) }}
-          <mat-icon></mat-icon>${{ flight.price }}
-        </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>{{ flight.origin }}</p>
-      <p>{{ flight.origin_airport }}</p>
-      <mat-icon></mat-icon>
-      <p>{{ flight.destination }}</p>
-      <p>{{ flight.destination_airport }}</p>
+      <div class="row">
+        <div class="col-md-5">
+          <h3>{{ flight.origin }}</h3>
+          <h4>{{ flight.origin_airport }}</h4>
+        </div>
+        <div class="col-md-5">
+          <h3>{{ flight.destination }}</h3>
+          <h4>{{ flight.destination_airport }}</h4>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary rounded-3" (click)="selectFlight(flight)">Select</button>
+        </div>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

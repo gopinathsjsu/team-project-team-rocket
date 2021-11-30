@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -55,7 +56,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatToolbarModule, MatExpansionModule,
+    MatToolbarModule, MatExpansionModule, MatCheckboxModule,
     MatAutocompleteModule, MatIconModule, MatCardModule, MatButtonModule, MatTabsModule, MatRadioModule, MatFormFieldModule, MatSelectModule,
     MatInputModule, MatDatepickerModule, MatNativeDateModule,
     NgbModule, NgbCollapseModule

@@ -14,24 +14,32 @@ export class FlightSelectComponent implements OnInit {
 
   flightList: any;
   subscription: Subscription;
-  searchForm: any;
+  searchForm: FormGroup;
+  params: any;
   minDate: Date;
 
-  constructor(private route: ActivatedRoute, private router: Router, private rocket: RocketService, private datepipe: DatePipe) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private rocket: RocketService, private date: DatePipe) {
+    this.route.params.subscribe(params => this.params = params);
+    this.searchForm = this.formBuilder.group({
+      origin: ['', Validators.required],
+      destination: ['', Validators.required],
+      departure_date: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.searchForm = params);
+
     this.subscription = this.rocket.flightList.subscribe((data) => {
-      console.log(data);
       this.flightList = data;
     });
     this.minDate = new Date();
   }
 
   onSubmit(): void {
-    console.log(this.searchForm);
-    console.log(this.flightList);
+    this.searchForm.value.departure_date = this.date.transform(this.searchForm.value.departure_date, 'yyyyMMdd')
+    this.rocket.searchRockets(this.searchForm.value).subscribe((data) => {
+      this.flightList = data;
+    });
   }
 
   getDate(departure_date: any, departure_time: any) {
@@ -40,8 +48,12 @@ export class FlightSelectComponent implements OnInit {
     let day = departure_date.substring(6, 8);
     let hour = departure_time.substring(0, 2);
     let minute = departure_time.substring(2, 4);
-    let date = new Date(year, month - 1, day, hour, minute);
-    return this.datepipe.transform(date, 'HH:mm');
+    let newDate = new Date(year, month - 1, day, hour, minute);
+    return this.date.transform(newDate, 'HH:mm');
+  }
+
+  selectFlight(flight: any) {
+    this.router.navigate(['/flights/seats', flight]);
   }
 
 }

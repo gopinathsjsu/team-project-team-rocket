@@ -20,6 +20,7 @@ export class FlightSearchComponent implements OnInit {
       origin: ['', Validators.required],
       destination: ['', Validators.required],
       departure_date: ['', Validators.required],
+      arrival_date: new FormControl({ value: '', disabled: true }, Validators.required),
       class: ['ec']
     });
     this.minDate = new Date();
@@ -41,7 +42,7 @@ export class FlightSearchComponent implements OnInit {
     this.rocket.searchRockets(this.searchForm.value).subscribe((data) => {
       this.rocket.changeList(data);
     });
-    this.router.navigate(['/flights/results', this.searchForm.value]);
+    this.router.navigate(['/flights/results', this.searchForm]);
     this.searchForm.reset();
   }
 

@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    margin-top: 15%;
+}
+
+.seat {
+    background-color: #444451;
+    height: 24px;
+    width: 30px;
+    margin: 6px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.seat.selected {
+    background-color: #6feaf6;
+}
+
+.seat.occupied {
+    background-color: rgb(255, 0, 0);
+}
+
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+.plane-map-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    height: 72px;
+    padding: 0 18px;
+    position: 15px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+.plane {
+    background: #fff;
+    margin: 20px auto 50px;
+    max-width: 290px;
+    position: relative;
+}
+
+.plane:before {
+    content: "";
+    background: #4577b8;
+    display: block;
+    position: absolute;
+    left: -360px;
+    top: 30%;
+    height: 300px;
+    width: 500px;
+    z-index: -1;
+    transform: rotate(-30deg);
+}
+
+.plane:after {
+    content: "";
+    background: #4577b8;
+    display: block;
+    position: absolute;
+    right: -360px;
+    top: 30%;
+    height: 300px;
+    width: 500px;
+    z-index: -1;
+    transform: rotate(30deg);
+}
+
+.plane-map-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    margin: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.exit {
+    position: relative;
+    height: 50px;
+}
+
+.exit:before,
+.exit:after {
+    content: "EXIT";
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0px 2px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    display: block;
+    position: absolute;
+    background: green;
+    color: white;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.exit:before {
+    left: 0;
+}
+
+.exit:after {
+    right: 0;
+}
+
+.fuselage {
+    border-right: 15px solid #b2cced;
+    border-left: 15px solid #b2cced;
+}

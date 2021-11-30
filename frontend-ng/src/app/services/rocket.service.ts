@@ -20,6 +20,10 @@ export class RocketService {
     return this.http.get(this.api, { params: searchObject });
   }
 
+  getSeatMap(_id: string) {
+    return this.http.get(this.api + '/seats', { params: { _id: _id } });
+  }
+
   changeList(flightList: any) {
     this.messageSource.next(flightList);
   }
