@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
       if (loginResponse['success']) {
         this.auth.loggedIn = true;
         localStorage.setItem('token', loginResponse['message']);
-        console.log(this.auth.redirectUrl);
         this.router.navigate([this.auth.redirectUrl]);
       }
       else {
