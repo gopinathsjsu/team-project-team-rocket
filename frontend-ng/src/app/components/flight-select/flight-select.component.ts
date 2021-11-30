@@ -12,8 +12,8 @@ import { RocketService } from 'src/app/services/rocket.service';
 })
 export class FlightSelectComponent implements OnInit {
 
-  flightList: any;
   subscription: Subscription;
+  flightList: any;
   searchForm: FormGroup;
   params: any;
   minDate: Date;
@@ -28,7 +28,6 @@ export class FlightSelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.subscription = this.rocket.flightList.subscribe((data) => {
       this.flightList = data;
     });
@@ -53,7 +52,8 @@ export class FlightSelectComponent implements OnInit {
   }
 
   selectFlight(flight: any) {
-    this.router.navigate(['/flights/seats', flight]);
+    this.rocket.changeFlight(flight);
+    this.router.navigate(['/flights/seats']);
   }
 
 }

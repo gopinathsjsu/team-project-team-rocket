@@ -11,8 +11,14 @@ export class RocketService {
 
   private api: string = environment.api + '/flights';
 
-  private messageSource = new BehaviorSubject([]);
-  flightList = this.messageSource.asObservable();
+  private flightListSource = new BehaviorSubject([]);
+  flightList = this.flightListSource.asObservable();
+
+  private flightSource = new BehaviorSubject({});
+  flight = this.flightSource.asObservable();
+
+  private seatSource = new BehaviorSubject({});
+  seat = this.seatSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +31,14 @@ export class RocketService {
   }
 
   changeList(flightList: any) {
-    this.messageSource.next(flightList);
+    this.flightListSource.next(flightList);
+  }
+
+  changeFlight(flight: any) {
+    this.flightSource.next(flight);
+  }
+
+  changeSeat(seat: any) {
+    this.seatSource.next(seat);
   }
 }
