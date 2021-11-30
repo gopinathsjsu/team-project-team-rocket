@@ -5,6 +5,7 @@ const booking = require('../controllers/booking.controller');
 
 router.post('/user/signup', user.signup);
 router.post('/user/login', user.login);
+router.get('/user/userInfo', user.userInfo);
 
 router.post('/flights', flight.create);
 router.get('/flights', flight.findByLocations);

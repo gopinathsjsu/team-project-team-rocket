@@ -1,4 +1,5 @@
 const User = require('../models/users.model')
+const url = require('url');
 
 exports.signup = async (req, res) => {
     if (!req.body) {
@@ -58,6 +59,21 @@ exports.login = async (req, res) => {
         console.log(e);
         res.status(500).send({
             message: "Error on login"
+        });
+    }
+}
+
+exports.userInfo = async (req, res) => {
+    const params = url.parse(req.url, true).query;
+    const customerId = params._id;
+    const query = { _id: customerId}
+    try{
+        const data = await User.findOne(query);
+        res.send(data);
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: 'Something went wrong'
         });
     }
 }
