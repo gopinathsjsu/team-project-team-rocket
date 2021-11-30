@@ -8,7 +8,6 @@ exports.create = async (req, res) => {
             message: 'Content cannot be empty'
         });
     }
-
     const booking = new Booking({
         user_id: req.body.user_id,
         flight_id: req.body.flight_id,
@@ -71,6 +70,23 @@ exports.getBookingByFlight = async (req, res) => {
         console.log(e);
         res.status(500).send({
             message: "Error -> getBookingByFlight"
+        });
+    }
+}
+
+exports.cancel = async (req, res) => {
+    const params = url.parse(req.url, true).query;
+    const query = { _id: params.booking_id };
+    try {
+        const cancelBooking = await Booking.deleteOne(query);
+        if (cancelBooking.deletedCount == 1) {
+            return res.json({ success: true, message: "Booking deleted" });
+        }
+        return res.json({ success: false, message: "There was an error. Try again" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: "Error -> cancel booking"
         });
     }
 }
