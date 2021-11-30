@@ -14,14 +14,20 @@ exports.create = async (req, res) => {
         flight_id: req.body.flight_id,
         booking_date: new Date(),
         seat: req.body.seat,
-        price: req.body.price
+        price: req.body.price,
     });
+    let use_miles = req.body.use_miles;
 
     try {
         const saveBooking = await booking.save();
         const query = { _id: booking.user_id };
         const user = await User.findOne(query);
-        user.miles = user.miles + booking.price * .1;
+        if (use_miles) {
+            newPrice = booking.price - user.miles;
+            user.miles = 0.1 * newPrice;
+        }
+        else
+            user.miles = user.miles + booking.price * .1;
         const updateMiles = await user.save();
         res.status(200).send({ success: 'true', message: 'Flight booked!' });
     } catch (e) {
