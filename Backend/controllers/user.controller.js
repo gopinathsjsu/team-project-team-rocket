@@ -1,6 +1,6 @@
 const User = require('../models/users.model')
 
-exports.register = async (req, res) => {
+exports.signup = async (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: 'Content cannot be empty'
@@ -19,11 +19,17 @@ exports.register = async (req, res) => {
         passport: req.body.passport
     });
 
-    console.log("Printing user",user);
-
     try {
-        const data = await user.save();
-        res.send(data);
+        const query = { email: user.email };
+        const userExists = await User.find(query);
+        if (userExists.length != 0) {
+            return res.json({ success: false, message: "User already exsits. Please signup" });
+        }
+        const newUser = await user.save();
+        if (newUser == undefined) {
+            return res.json({ success: false, message: "Singup failed. Try again" });
+        }
+        return res.json({ success: true, message: "Singup complete! Please login" });
     } catch (e) {
         console.log(e);
         res.status(500).send({
@@ -41,12 +47,11 @@ exports.login = async (req, res) => {
     }
     const email = req.body.email;
     const password = req.body.password;
-    const query = { email: email, password: password }
+    const query = { email: email, password: password };
     try {
         const user = await User.find(query);
-        console.log("printing user=",user);
-        if (user.length==0) {
-            return res.status(400).send({ success: false, message: "Login failed" })
+        if (user.length == 0) {
+            return res.json({ success: false, message: "Login failed" })
         }
         return res.json({ success: true, message: "jwt_token_202" })
     } catch (e) {
