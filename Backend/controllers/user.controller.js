@@ -17,7 +17,8 @@ exports.signup = async (req, res) => {
         city: req.body.city,
         zip: req.body.zip,
         dob: req.body.dob,
-        passport: req.body.passport
+        passport: req.body.passport,
+        miles: 0
     });
 
     try {
