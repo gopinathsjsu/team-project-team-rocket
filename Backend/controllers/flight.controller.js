@@ -98,7 +98,7 @@ exports.getSeatMap = async (req, res) => {
 	const _id = params._id;
 	query = { _id: _id };
 	try {
-		const data = await Flight.find(query, { spaceship_seats: 1 });
+		const data = await Flight.findOne(query, { spaceship_seats: 1 });
 		res.send(data);
 	} catch (e) {
 		console.log(e);
