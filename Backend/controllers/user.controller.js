@@ -51,11 +51,11 @@ exports.login = async (req, res) => {
     const password = req.body.password;
     const query = { email: email, password: password };
     try {
-        const user = await User.find(query);
-        if (user.length == 0) {
+        const user = await User.findOne(query);
+        if (user == undefined) {
             return res.json({ success: false, message: "Login failed" })
         }
-        return res.json({ success: true, message: "jwt_token_202" })
+        return res.json({ success: true, message: user._id })
     } catch (e) {
         console.log(e);
         res.status(500).send({
