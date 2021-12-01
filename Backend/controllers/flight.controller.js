@@ -1,33 +1,6 @@
 const url = require('url');
 const Flight = require('../models/flights.model.js');
 
-function populateSpaceshipSeats() {
-	const result = [];
-	for (let col = 0; col < 3; col++) {
-		for (let row = 1; row <= 10; row++) {
-			var seat = {};
-			switch (col) {
-				case (0):
-					seat.seat_column = 'A';
-					seat.seat_class = "First";
-					break;
-				case (1):
-					seat.seat_column = 'B';
-					seat.seat_class = "Economy";
-					break;
-				case (2):
-					seat.seat_column = 'C';
-					seat.seat_class = "Economy";
-					break;
-			}
-			seat.seat_row = row;
-			seat.isReserved = false;
-			result.push(seat);
-		}
-	}
-	return result;
-}
-
 // Create and save a new flight
 exports.create = async (req, res) => {
 	if (!req.body) {
@@ -79,7 +52,7 @@ exports.findByLocations = async (req, res) => {
 		query = { origin: origin, destination: destination, departure_date: departure_date }
 	}
 	else {
-		query = { origin: origin, destination: destination, 'spaceship_seats.seat_class': seat_class }
+		query = { origin: origin, destination: destination, 'seat.class': seat_class }
 	}
 
 	try {
@@ -98,7 +71,7 @@ exports.getSeatMap = async (req, res) => {
 	const flight_id = params.flight_id;
 	query = { _id: flight_id };
 	try {
-		const data = await Flight.findOne(query, { spaceship_seats: 1 });
+		const data = await Flight.findOne(query, { seats: 1 });
 		res.send(data);
 	} catch (e) {
 		console.log(e);

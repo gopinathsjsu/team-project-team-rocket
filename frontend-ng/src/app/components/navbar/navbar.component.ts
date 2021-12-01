@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,14 +12,19 @@ export class NavbarComponent implements OnInit {
   name = 'Angular';
   public isCollapsed = true;
 
-  constructor(private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService) {
+  }
+
+  ngOnInit() {
   }
 
   loggedIn() {
     return this.auth.isAuthenticated();
   }
 
-  ngOnInit() {
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['']);
   }
 
 }
