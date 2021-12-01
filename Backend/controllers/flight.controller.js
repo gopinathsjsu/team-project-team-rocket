@@ -93,3 +93,15 @@ exports.getSeatMap = async (req, res) => {
 		});
 	}
 }
+
+exports.planets = async (req, res) => {
+	try {
+		const data = await Flight.distinct('origin');
+		return res.json(data);
+	} catch (e) {
+		console.log(e);
+		res.status(500).send({
+			message: "Error on flight seatmap"
+		});
+	}
+}

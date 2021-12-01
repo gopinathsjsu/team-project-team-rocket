@@ -8,6 +8,7 @@ router.post('/user/login', user.login);
 router.get('/user/userInfo', user.userInfo);
 router.get('/user/miles', user.miles);
 
+router.get('/flights/planets', flight.planets);
 router.post('/flights', flight.create);
 router.get('/flights', flight.findByLocations);
 router.get('/flights/seats', flight.getSeatMap);
