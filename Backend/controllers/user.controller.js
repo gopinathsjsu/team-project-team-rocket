@@ -67,14 +67,32 @@ exports.login = async (req, res) => {
 exports.userInfo = async (req, res) => {
     const params = url.parse(req.url, true).query;
     const customerId = params._id;
-    const query = { _id: customerId}
-    try{
+    const query = { _id: customerId }
+    try {
         const data = await User.findOne(query);
         res.send(data);
     } catch (e) {
         console.log(e);
         res.status(500).send({
             message: 'Something went wrong'
+        });
+    }
+}
+
+exports.miles = async (req, res) => {
+    const params = url.parse(req.url, true).query;
+    const query = { _id: params.user_id };
+    try {
+        const user = await User.findOne(query, { miles: 1 });
+        if (user == undefined || user.miles == undefined)
+            return res.json({ success: false, message: 'Couldn\'t retrieve miles.' });
+        if (user.miles == 0)
+            return res.json({ success: false, message: 'No miles rewards available!' });
+        return res.json({ success: true, message: user.miles });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: 'Error -> userMiles'
         });
     }
 }
