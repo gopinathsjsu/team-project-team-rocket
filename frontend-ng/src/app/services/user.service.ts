@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private date: DatePipe) { }
 
-  getUserInfo() {
-
+  getUserProfile(user_id: any) {
+    return this.http.get(this.api + '/profile', { params: { user_id: user_id } });
   }
 
   getUserBookings(user_id: any) {
