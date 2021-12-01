@@ -31,7 +31,7 @@ exports.signup = async (req, res) => {
         if (newUser == undefined) {
             return res.json({ success: false, message: "Singup failed. Try again" });
         }
-        return res.json({ success: true, message: "Singup complete! Please login" });
+        return res.json({ success: true, message: "Signup complete! Please login" });
     } catch (e) {
         console.log(e);
         res.status(500).send({
