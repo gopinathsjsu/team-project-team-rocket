@@ -40,6 +40,19 @@ exports.create = async (req, res) => {
 
 };
 
+exports.findById = async (req, res) => {
+	const flight_id = url.parse(req.url, true).query.flight_id;
+	try {
+		const flight = await Flight.findById(flight_id);
+		res.send(flight);
+	} catch (e) {
+		console.log(e);
+		res.status(500).send({
+			message: "Error on flight fetch."
+		});
+	}
+}
+
 exports.findByLocations = async (req, res) => {
 	const params = url.parse(req.url, true).query;
 	const origin = params.origin;

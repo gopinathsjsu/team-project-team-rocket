@@ -11,11 +11,12 @@ router.get('/user/miles', user.miles);
 router.post('/flights', flight.create);
 router.get('/flights', flight.findByLocations);
 router.get('/flights/seats', flight.getSeatMap);
+router.get('/flights/id', flight.findById);
 
 router.post('/booking', booking.create);
 router.put('/booking', booking.update);
 router.delete('/booking', booking.cancel);
-router.get('/booking/user', booking.getBookingByUser);
+router.get('/user/booking', booking.getBookingByUser);
 router.get('/booking/flight', booking.getBookingByFlight);
 
 module.exports = router;

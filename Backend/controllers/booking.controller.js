@@ -26,15 +26,15 @@ exports.create = async (req, res) => {
         const updateFlight = await Flight.findOne(query);
         const seats = updateFlight['seats'];
 
-        let row = booking.seat.row;
-        let col = undefined;
-        switch (booking.seat.column) {
-            case 'A': col = 0; break;
-            case 'B': col = 1; break;
-            case 'C': col = 2; break;
-        }
-        seats[row-1][col].isReserved = true;
-        updateFlight['seats'] = seats;
+        // let row = booking.seat.row;
+        // let col = undefined;
+        // switch (booking.seat.column) {
+        //     case 'A': col = 0; break;
+        //     case 'B': col = 1; break;
+        //     case 'C': col = 2; break;
+        // }
+        // seats[row - 1][col].isReserved = true;
+        updateFlight['seats'] = await toggleSeat(updateFlight['seats'], booking.seat, true);
         const updatedFlight = await updateFlight.save();
 
         var query = { _id: booking.user_id };
@@ -107,7 +107,7 @@ exports.update = async (req, res) => {
     } catch (e) {
         console.log(e);
         res.status(500).send({
-            message: "Error -> cancel booking"
+            message: "Error -> update booking"
         });
     }
 }
@@ -116,6 +116,10 @@ exports.cancel = async (req, res) => {
     const params = url.parse(req.url, true).query;
     const query = { _id: params.booking_id };
     try {
+        const toDelete = await Booking.findOne(query);
+        const flight = await Flight.findById(toDelete['flight_id']);
+        flight['seats'] = await toggleSeat(flight['seats'], toDelete.seat, false);
+        const updatedFlight = await flight.save();
         const cancelBooking = await Booking.deleteOne(query);
         if (cancelBooking.deletedCount == 1) {
             return res.json({ success: true, message: "Booking deleted" });
@@ -127,4 +131,16 @@ exports.cancel = async (req, res) => {
             message: "Error -> cancel booking"
         });
     }
+}
+
+async function toggleSeat(seats, seat, toggle) {
+    let row = seat.row;
+    let col = undefined;
+    switch (seat.column) {
+        case 'A': col = 0; break;
+        case 'B': col = 1; break;
+        case 'C': col = 2; break;
+    }
+    seats[row - 1][col].isReserved = toggle;
+    return seats;
 }
