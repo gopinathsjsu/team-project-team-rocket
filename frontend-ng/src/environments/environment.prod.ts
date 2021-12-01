@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://rabackend-env.eba-miairzbq.us-east-1.elasticbeanstalk.com/api'
+  api: 'http://raprod-env.eba-xfnxbrf4.us-east-1.elasticbeanstalk.com/api'
 };
