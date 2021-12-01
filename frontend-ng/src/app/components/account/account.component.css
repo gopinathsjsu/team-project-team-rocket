@@ -2,8 +2,12 @@
     margin-top: 5%;
 }
 
-.example-card {
-    margin-left: 25%;
+.booking-card {
+    width: 100%;
+}
+
+.profile-card {
+    margin-right: 0%;
     width: 100%;
 }
 
@@ -14,4 +18,8 @@
 
 .mat-cancel {
     background-color: crimson;
+}
+
+.align-right {
+    text-align: right;
 }
