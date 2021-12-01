@@ -9,7 +9,7 @@ Sprint 1: 10/08/2021 - 10/14/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION" : The team made sure to meet once a week and updates over research communicated over shared mediums like whatsapp and docs.
+	"COMMUNICATION" : The team made sure to meet once a week and updates over research communicated over shared mediums like whatsapp and docs.
 
 
 
@@ -22,7 +22,7 @@ Sprint 2: 10/15/2021 - 10/21/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION" : The team made sure to meet once a week and helped out each other with queries and learnings.
+	"COMMUNICATION" : The team made sure to meet once a week and helped out each other with queries and learnings.
 
 
 Sprint 3: 10/22/2021 - 10/28/2021
@@ -35,7 +35,7 @@ Sprint 3: 10/22/2021 - 10/28/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": With midterms it was not possible to meet in person but we communicated our progress over call.
+	"COMMUNICATION": With midterms it was not possible to meet in person but we communicated our progress over call.
 
 Sprint 4: 10/29/2021 - 11/4/2021
 - Weekly Scrum Report
@@ -48,7 +48,7 @@ Sprint 4: 10/29/2021 - 11/4/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": I was out of town for two weeks because of which the in person meet was not possible. Everyone
+	"COMMUNICATION": I was out of town for two weeks because of which the in person meet was not possible. Everyone
     was constantly kept updated on the work they are doing over calls and chats.
 
 Sprint 5: 11/05/2021 - 11/11/2021
@@ -61,7 +61,7 @@ Sprint 5: 11/05/2021 - 11/11/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": Resumed the in person meet. Took into account the work remaining and re-priotized the work to be done.
+	"COMMUNICATION": Resumed the in person meet. Took into account the work remaining and re-priotized the work to be done.
 
 
 Sprint 6: 11/12/2021 - 11/18/2021
@@ -74,7 +74,7 @@ Sprint 6: 11/12/2021 - 11/18/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": Made sure to meet once a week. If someone was struggling to get things done it was communicated clearly and dealt as a team.
+	"COMMUNICATION": Made sure to meet once a week. If someone was struggling to get things done it was communicated clearly and dealt as a team.
 
 Sprint 7: 11/19/2021 - 11/25/2021
 - Weekly Scrum Report
@@ -86,4 +86,4 @@ Sprint 7: 11/19/2021 - 11/25/2021
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": Made sure to meet once a week. If someone was struggling to get things done it was communicated clearly and dealt as a team.
+	"COMMUNICATION": Made sure to meet once a week. If someone was struggling to get things done it was communicated clearly and dealt as a team.

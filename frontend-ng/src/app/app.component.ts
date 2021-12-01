@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { MatIconRegistry } from "@angular/material/icon";
-import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +7,4 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class AppComponent {
   title = 'frontend-ng';
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer){
-    this.matIconRegistry.addSvgIcon(
-      'Rocket',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/R3.svg")
-    );
-  }
 }
