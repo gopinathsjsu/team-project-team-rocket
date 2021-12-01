@@ -14,7 +14,8 @@ import { map, startWith } from 'rxjs/operators';
 export class FlightSearchComponent implements OnInit {
 
   planets: string[];
-  filteredPlanets: Observable<string[]>;
+  filteredOrigin: Observable<string[]>;
+  filteredDestination: Observable<string[]>;
   searchForm: FormGroup;
   minDate: Date;
 
@@ -33,7 +34,11 @@ export class FlightSearchComponent implements OnInit {
   ngOnInit(): void {
     this.rocket.getPlanets().subscribe((data: any) => {
       this.planets = data;
-      this.filteredPlanets = this.searchForm.controls.origin.valueChanges.pipe(
+      this.filteredOrigin = this.searchForm.controls.origin.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value)),
+      );
+      this.filteredDestination = this.searchForm.controls.destination.valueChanges.pipe(
         startWith(''),
         map(value => this._filter(value)),
       );
@@ -57,7 +62,7 @@ export class FlightSearchComponent implements OnInit {
     this.rocket.searchRockets(this.searchForm.value).subscribe((data) => {
       this.rocket.changeList(data);
     });
-    this.router.navigate(['/flights/results', this.searchForm]);
+    this.router.navigate(['/flights/results', this.searchForm.value]);
     this.searchForm.reset();
   }
 

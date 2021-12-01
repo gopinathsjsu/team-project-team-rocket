@@ -15,7 +15,7 @@
         <mat-datepicker-toggle matSuffix [for]="outgoing_picker"></mat-datepicker-toggle>
         <mat-datepicker #outgoing_picker></mat-datepicker>
       </mat-form-field>
-      <button class="btn btn-primary rounded-3">Update</button>
+      <button class="btn btn-primary rounded-3">Search</button>
     </form>
   </mat-card>
 
@@ -26,8 +26,8 @@
         <mat-panel-title>
           <div class="col-md-4">{{ flight.origin_code }}&nbsp;<mat-icon>arrow_right_alt</mat-icon>&nbsp;{{
             flight.destination_code }}</div>
-          <div class="col-md-4">{{ getDate(flight.departure_date, flight.departure_time) }} - {{
-            getDate(flight.arrival_date, flight.arrival_time) }}</div>
+          <div class="col-md-4">{{ getTime(flight.departure_time) }} - {{
+            getTime(flight.arrival_time) }}</div>
           <div class="col-md-4">
             Starting from&nbsp;&nbsp;${{ flight.price }}
           </div>

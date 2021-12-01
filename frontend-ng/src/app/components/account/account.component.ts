@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/services/booking.service';
+import { DatetimeService } from 'src/app/services/datetime.service';
 import { RocketService } from 'src/app/services/rocket.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,7 @@ export class AccountComponent implements OnInit {
 
   profile: any;
   bookings: any;
-  constructor(private user: UserService, private rocket: RocketService, private booking: BookingService) { }
+  constructor(private user: UserService, private rocket: RocketService, private booking: BookingService, private datetime: DatetimeService) { }
 
   ngOnInit(): void {
     this.user.getUserProfile(localStorage.getItem('token')).subscribe((data: any) => {
@@ -29,7 +30,7 @@ export class AccountComponent implements OnInit {
   }
 
   getFullDate(flight: any) {
-    return this.user.getFullDate(flight.departure_date, flight.departure_time);
+    return this.datetime.getDateTime(flight.departure_date, flight.departure_time);
   }
 
   updateBooking(booking_id: string) {

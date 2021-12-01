@@ -12,7 +12,7 @@
                     <input matInput formControlName="origin" placeholder="From..." class="form-control"
                         [matAutocomplete]="origin">
                     <mat-autocomplete autoActiveFirstOption #origin="matAutocomplete">
-                        <mat-option *ngFor="let planet of filteredPlanets | async" [value]="planet">
+                        <mat-option *ngFor="let planet of filteredOrigin | async" [value]="planet">
                             {{planet}}
                         </mat-option>
                     </mat-autocomplete>
@@ -23,7 +23,7 @@
                     <input matInput formControlName="destination" placeholder="To..." class="form-control"
                         [matAutocomplete]="destination">
                     <mat-autocomplete autoActiveFirstOption #destination="matAutocomplete">
-                        <mat-option *ngFor="let planet of filteredPlanets | async" [value]="planet">
+                        <mat-option *ngFor="let planet of filteredDestination | async" [value]="planet">
                             {{planet}}
                         </mat-option>
                     </mat-autocomplete>

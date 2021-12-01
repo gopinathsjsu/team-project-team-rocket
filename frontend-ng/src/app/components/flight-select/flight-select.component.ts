@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RocketService } from 'src/app/services/rocket.service';
+import { DatetimeService } from 'src/app/services/datetime.service';
 
 @Component({
   selector: 'app-flight-select',
@@ -18,12 +19,14 @@ export class FlightSelectComponent implements OnInit {
   params: any;
   minDate: Date;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private rocket: RocketService, private date: DatePipe) {
+  constructor(private formBuilder: FormBuilder, private datetime: DatetimeService,
+    private route: ActivatedRoute, private router: Router, private rocket: RocketService) {
     this.route.params.subscribe(params => this.params = params);
+    console.log(this.params);
     this.searchForm = this.formBuilder.group({
-      origin: ['', Validators.required],
-      destination: ['', Validators.required],
-      departure_date: ['', Validators.required],
+      origin: [this.params.origin, Validators.required],
+      destination: [this.params.destination, Validators.required],
+      departure_date: [this.datetime.getDate(this.params.departure_date), Validators.required],
     });
   }
 
@@ -34,21 +37,15 @@ export class FlightSelectComponent implements OnInit {
     this.minDate = new Date();
   }
 
+  getTime(time: any) {
+    return this.datetime.getTime(time);
+  }
+
   onSubmit(): void {
-    this.searchForm.value.departure_date = this.date.transform(this.searchForm.value.departure_date, 'yyyyMMdd')
+    this.searchForm.value.departure_date = this.datetime.convertToYYYYMMDD(this.searchForm.value.departure_date);
     this.rocket.searchRockets(this.searchForm.value).subscribe((data) => {
       this.flightList = data;
     });
-  }
-
-  getDate(departure_date: any, departure_time: any) {
-    let year = departure_date.substring(0, 4);
-    let month = departure_date.substring(4, 6);
-    let day = departure_date.substring(6, 8);
-    let hour = departure_time.substring(0, 2);
-    let minute = departure_time.substring(2, 4);
-    let newDate = new Date(year, month - 1, day, hour, minute);
-    return this.date.transform(newDate, 'HH:mm');
   }
 
   selectFlight(flight: any) {
