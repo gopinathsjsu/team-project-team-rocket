@@ -88,7 +88,7 @@ exports.miles = async (req, res) => {
             return res.json({ success: false, message: 'Couldn\'t retrieve miles.' });
         if (user.miles == 0)
             return res.json({ success: false, message: 'No miles rewards available!' });
-        return res.json({ success: true, message: user.miles });
+        return res.json({ success: true, miles: user.miles, message: 'Use ' + user.miles + ' miles points' });
     } catch (e) {
         console.log(e);
         res.status(500).send({

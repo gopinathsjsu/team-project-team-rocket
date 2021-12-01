@@ -13,9 +13,9 @@ router.get('/flights', flight.findByLocations);
 router.get('/flights/seats', flight.getSeatMap);
 
 router.post('/booking', booking.create);
-router.get('/booking/user', booking.getBookingByUser);
-router.get('/booking/flight', booking.getBookingByFlight);
 router.put('/booking', booking.update);
 router.delete('/booking', booking.cancel);
+router.get('/booking/user', booking.getBookingByUser);
+router.get('/booking/flight', booking.getBookingByFlight);
 
 module.exports = router;

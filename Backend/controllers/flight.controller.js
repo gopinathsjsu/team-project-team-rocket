@@ -95,7 +95,7 @@ exports.findByLocations = async (req, res) => {
 
 exports.getSeatMap = async (req, res) => {
 	const params = url.parse(req.url, true).query;
-	const _id = params.flight_id;
+	const flight_id = params.flight_id;
 	query = { _id: flight_id };
 	try {
 		const data = await Flight.findOne(query, { spaceship_seats: 1 });
