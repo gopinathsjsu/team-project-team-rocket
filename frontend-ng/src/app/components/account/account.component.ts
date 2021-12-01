@@ -10,10 +10,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AccountComponent implements OnInit {
 
+  profile: any;
   bookings: any;
   constructor(private user: UserService, private rocket: RocketService, private booking: BookingService) { }
 
   ngOnInit(): void {
+    this.user.getUserProfile(localStorage.getItem('token')).subscribe((data) => {
+      this.profile = data;
+    })
     this.user.getUserBookings(localStorage.getItem('token')).subscribe((data) => {
       this.bookings = data;
       for (let booking of this.bookings) {
