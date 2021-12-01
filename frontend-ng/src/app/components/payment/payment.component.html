@@ -1,1 +1,38 @@
-<button (click)="clicker()">Click Me</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Your trip review</mat-card-title>
+                    <mat-card-subtitle>
+                        <h2>{{flight.origin}} to {{flight.destination}}</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        <mat-icon>flight_takeoff</mat-icon><b>Departure</b><br>
+                        {{getDate(flight.departure_date, flight.departure_time)}}<br>
+                        {{flight.origin_airport}}
+                        <br><br>
+                    </p>
+                    <p>
+                        <mat-icon>flight_land</mat-icon><b>Arrival</b><br>
+                        {{getDate(flight.departure_date, flight.departure_time)}}<br>
+                        {{flight.destination_airport}}
+                        <br><br>
+                    </p>
+                    <p>
+                        Flight fare: ${{flight.price}}<br>
+                        <mat-checkbox [disabled]="!hasMiles" [(ngModel)]="useMiles" class="example-margin">{{milesMessage}}</mat-checkbox><br>
+                        Total: ${{getTotal()}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="back">BACK</button>
+                    <button mat-raised-button color="confirm" (click)="bookRocket()">CONFIRM</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

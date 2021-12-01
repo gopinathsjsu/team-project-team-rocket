@@ -1,0 +1,14 @@
+.example-card {
+    margin-top: 10%;
+    width: 100%;
+}
+
+.mat-confirm {
+    background-color: green;
+    color: #fff;
+}
+
+.mat-back {
+    background-color: red;
+    color: #fff;
+}

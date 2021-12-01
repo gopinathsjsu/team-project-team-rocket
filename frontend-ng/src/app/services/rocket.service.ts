@@ -26,8 +26,8 @@ export class RocketService {
     return this.http.get(this.api, { params: searchObject });
   }
 
-  getSeatMap(_id: string) {
-    return this.http.get(this.api + '/seats', { params: { _id: _id } });
+  getSeatMap(flight_id: string) {
+    return this.http.get(this.api + '/seats', { params: { flight_id: flight_id } });
   }
 
   changeList(flightList: any) {
@@ -41,4 +41,5 @@ export class RocketService {
   changeSeat(seat: any) {
     this.seatSource.next(seat);
   }
+
 }

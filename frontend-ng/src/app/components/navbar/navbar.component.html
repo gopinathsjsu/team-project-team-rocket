@@ -8,10 +8,10 @@
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item">
-                <a class="nav-link" routerLink="login">Login</a>
+                <a *ngIf="!loggedIn()" class="nav-link" routerLink="login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="signup">Sign up</a>
+                <a *ngIf="!loggedIn()" class="nav-link" routerLink="signup">Sign up</a>
             </li>
         </ul>
     </div>
