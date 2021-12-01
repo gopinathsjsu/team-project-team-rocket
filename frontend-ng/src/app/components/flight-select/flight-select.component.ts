@@ -22,7 +22,7 @@ export class FlightSelectComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private datetime: DatetimeService,
     private route: ActivatedRoute, private router: Router, private rocket: RocketService) {
     this.route.params.subscribe(params => this.params = params);
-    console.log(this.params);
+    console.log(this.datetime.getDate(this.params.departure_date));
     this.searchForm = this.formBuilder.group({
       origin: [this.params.origin, Validators.required],
       destination: [this.params.destination, Validators.required],
