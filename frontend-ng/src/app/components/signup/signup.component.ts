@@ -19,11 +19,11 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirm_password: new FormControl('', [Validators.required]),
-      dob: new FormControl('', [Validators.required]),
-      passport: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
-      state: new FormControl(''),
-      city: new FormControl(''),
-      zip: new FormControl(''),
+      // dob: new FormControl('', [Validators.required]),
+      // passport: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+      // state: new FormControl(''),
+      // city: new FormControl(''),
+      // zip: new FormControl(''),
     });
     this.hide = true;
   }
@@ -37,11 +37,9 @@ export class SignupComponent implements OnInit {
     }
     this.auth.signup(this.signupForm.value).subscribe((data) => {
       let signupResponse = JSON.parse(JSON.stringify(data));
+      alert(signupResponse['message']);
       if (signupResponse['success']) {
         this.router.navigate([this.auth.redirectUrl]);
-      }
-      else {
-        alert(signupResponse['message']);
       }
     });
   }
