@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-const seatSchema = new Schema({
-	seat_column: String,
-	seat_row: Number,
-	seat_class: String,
-	isReserved: Boolean
-});
+const Seat = require('./seat.model');
 
 const FlightSchema = new Schema({
 	airline_code: { type: String, default: "RA" },
@@ -23,7 +17,7 @@ const FlightSchema = new Schema({
 	arrival_date: { type: String, required: true },
 	arrival_time: { type: String, required: true },
 	status: { type: String, required: true, default: 'Open' },
-	spaceship_seats: [{ type: seatSchema }]
+	seats: { type: [[Seat.schema]] }
 }
 );
 

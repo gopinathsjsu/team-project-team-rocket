@@ -1,6 +1,8 @@
 const url = require('url');
 const Booking = require('../models/bookings.model')
 const User = require('../models/users.model');
+const Seat = require('../models/seat.model');
+const Flight = require('../models/flights.model');
 
 exports.create = async (req, res) => {
     if (!req.body) {
@@ -12,21 +14,37 @@ exports.create = async (req, res) => {
         user_id: req.body.user_id,
         flight_id: req.body.flight_id,
         booking_date: new Date(),
-        seat: req.body.seat,
+        seat: JSON.parse(req.body.seat),
         price: req.body.price,
     });
     let use_miles = req.body.use_miles;
 
     try {
         const saveBooking = await booking.save();
-        const query = { _id: booking.user_id };
+
+        var query = { _id: booking.flight_id };
+        const updateFlight = await Flight.findOne(query);
+        const seats = updateFlight['seats'];
+
+        let row = booking.seat.row;
+        let col = undefined;
+        switch (booking.seat.column) {
+            case 'A': col = 0; break;
+            case 'B': col = 1; break;
+            case 'C': col = 2; break;
+        }
+        seats[row-1][col].isReserved = true;
+        updateFlight['seats'] = seats;
+        const updatedFlight = await updateFlight.save();
+
+        var query = { _id: booking.user_id };
         const user = await User.findOne(query);
         if (use_miles) {
             newPrice = booking.price - user.miles;
-            user.miles = 0.1 * newPrice;
+            user.miles = Math.round(0.1 * newPrice);
         }
         else
-            user.miles = user.miles + booking.price * .1;
+            user.miles = user.miles + Math.round(booking.price * 0.1);
         const updateMiles = await user.save();
         res.status(200).send({ success: 'true', message: 'Flight booked!' });
     } catch (e) {
