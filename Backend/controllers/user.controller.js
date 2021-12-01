@@ -64,13 +64,12 @@ exports.login = async (req, res) => {
     }
 }
 
-exports.userInfo = async (req, res) => {
+exports.profile = async (req, res) => {
     const params = url.parse(req.url, true).query;
-    const customerId = params._id;
-    const query = { _id: customerId }
+    const query = { _id: params.user_id }
     try {
         const data = await User.findOne(query);
-        res.send(data);
+        return res.json(data);
     } catch (e) {
         console.log(e);
         res.status(500).send({

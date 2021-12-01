@@ -5,7 +5,7 @@ const booking = require('../controllers/booking.controller');
 
 router.post('/user/signup', user.signup);
 router.post('/user/login', user.login);
-router.get('/user/userInfo', user.userInfo);
+router.get('/user/profile', user.profile);
 router.get('/user/miles', user.miles);
 
 router.get('/flights/planets', flight.planets);
