@@ -28,7 +28,7 @@ export class AccountComponent implements OnInit {
     return this.user.getFullDate(flight.departure_date, flight.departure_time);
   }
 
-  updateBooking() {
+  updateBooking(booking_id: string) {
 
   }
 

@@ -1,39 +1,56 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title>My Trips</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Origin</th>
-                                <th scope="col">Desination</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let booking of bookings">
-                                <th scope="row">{{booking._id.substring(booking._id.length-6).toUpperCase()}}</th>
-                                <td>{{booking.flight.origin}}</td>
-                                <td>{{booking.flight.destination}}</td>
-                                <td>{{getFullDate(booking.flight)}}</td>
-                                <td>
-                                    <button mat-raised-button color="update" (click)="updateBooking()">UPDATE</button>
-                                    <button mat-raised-button color="cancel" (click)="cancelBooking(booking._id)">CANCEL</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="col-md-4">
-
-        </div>
-    </div>
+<div class="row">
+  <div class="col-md-6">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>My Trips</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Desination</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let booking of bookings">
+              <th scope="row">{{booking._id.substring(booking._id.length-6).toUpperCase()}}</th>
+              <td>{{booking.flight.origin}}</td>
+              <td>{{booking.flight.destination}}</td>
+              <td>{{getFullDate(booking.flight)}}</td>
+              <td>
+                <button mat-raised-button color="update" (click)="updateBooking(booking._id)">UPDATE</button>
+                <button mat-raised-button color="cancel" (click)="cancelBooking(booking._id)">CANCEL</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-3">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>My Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">First Name</th>
+              <td>Aniruddha</td>
+            </tr>
+            <tr>
+              <th scope="row">Last Name</th>
+              <td>Narkhede</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

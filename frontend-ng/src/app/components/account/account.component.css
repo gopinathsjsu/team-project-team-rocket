@@ -2,6 +2,11 @@
     margin-top: 5%;
 }
 
+.example-card {
+    margin-left: 25%;
+    width: 100%;
+}
+
 .mat-update {
     background-color: orange;
     margin-right: 25px;

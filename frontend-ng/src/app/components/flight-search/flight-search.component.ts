@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { RocketService } from 'src/app/services/rocket.service';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-flight-search',
@@ -11,6 +13,8 @@ import { RocketService } from 'src/app/services/rocket.service';
 })
 export class FlightSearchComponent implements OnInit {
 
+  planets: string[];
+  filteredPlanets: Observable<string[]>;
   searchForm: FormGroup;
   minDate: Date;
 
@@ -27,7 +31,18 @@ export class FlightSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.rocket.getPlanets().subscribe((data: any) => {
+      this.planets = data;
+      this.filteredPlanets = this.searchForm.controls.origin.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value)),
+      );
+    });
+  }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.planets.filter(planet => planet.toLowerCase().includes(filterValue));
   }
 
   isOneWay() {

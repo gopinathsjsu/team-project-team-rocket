@@ -22,6 +22,10 @@ export class RocketService {
 
   constructor(private http: HttpClient) { }
 
+  getPlanets() {
+    return this.http.get(this.api + '/planets');
+  }
+
   searchRockets(searchObject: any) {
     return this.http.get(this.api, { params: searchObject });
   }
