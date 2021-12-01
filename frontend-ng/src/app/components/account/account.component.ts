@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
   constructor(private user: UserService, private rocket: RocketService, private booking: BookingService) { }
 
   ngOnInit(): void {
-    this.user.getUserProfile(localStorage.getItem('token')).subscribe((data) => {
+    this.user.getUserProfile(localStorage.getItem('token')).subscribe((data: any) => {
       this.profile = data;
     })
     this.user.getUserBookings(localStorage.getItem('token')).subscribe((data) => {
