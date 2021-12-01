@@ -1,0 +1,12 @@
+.row {
+    margin-top: 5%;
+}
+
+.mat-update {
+    background-color: orange;
+    margin-right: 25px;
+}
+
+.mat-cancel {
+    background-color: crimson;
+}

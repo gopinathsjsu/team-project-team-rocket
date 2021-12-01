@@ -14,4 +14,8 @@ export class BookingService {
   bookRocket(bookingObject: any) {
     return this.http.post(this.api, bookingObject);
   }
+
+  cancelBooking(booking_id: string) {
+    return this.http.delete(this.api, { params: { booking_id: booking_id } });
+  }
 }

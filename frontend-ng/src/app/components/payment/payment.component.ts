@@ -42,10 +42,17 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  getFare() {
+    if (this.seat['class'] == 'First') {
+      return this.flight.price * 1.5;
+    }
+    return this.flight.price;
+  }
+
   getTotal() {
     if (this.useMiles)
-      return this.flight.price - this.miles;
-    return this.flight.price;
+      return this.getFare() - this.miles;
+    return this.getFare();
   }
 
   getDate(departure_date: any, departure_time: any) {
@@ -62,12 +69,15 @@ export class PaymentComponent implements OnInit {
     let bookingObject = {
       user_id: localStorage.getItem('token'),
       flight_id: this.flight._id,
-      seat: this.seat,
+      seat: JSON.stringify(this.seat),
       use_miles: this.useMiles,
       price: this.getTotal()
     }
-    this.book.bookRocket(bookingObject).subscribe((data) => {
-      console.log(data);
+    console.log(bookingObject);
+    this.book.bookRocket(bookingObject).subscribe((data: any) => {
+      alert(data['message']);
+      if (data['success'])
+        this.router.navigate(['']);
     });
   }
 

@@ -11,20 +11,25 @@
                 </mat-card-header>
                 <mat-card-content>
                     <p>
-                        <mat-icon>flight_takeoff</mat-icon><b>Departure</b><br>
+                        <b>Departure</b>&nbsp;<mat-icon>flight_takeoff</mat-icon><br>
                         {{getDate(flight.departure_date, flight.departure_time)}}<br>
                         {{flight.origin_airport}}
                         <br><br>
                     </p>
                     <p>
-                        <mat-icon>flight_land</mat-icon><b>Arrival</b><br>
+                        <mat-icon>flight_land</mat-icon>&nbsp;<b>Arrival</b><br>
                         {{getDate(flight.departure_date, flight.departure_time)}}<br>
                         {{flight.destination_airport}}
                         <br><br>
                     </p>
                     <p>
-                        Flight fare: ${{flight.price}}<br>
-                        <mat-checkbox [disabled]="!hasMiles" [(ngModel)]="useMiles" class="example-margin">{{milesMessage}}</mat-checkbox><br>
+                        <mat-icon>event_seat</mat-icon>&nbsp;<b>{{seat.row}}{{seat.column}} - {{seat.class}}</b>
+                        <br><br>
+                    </p>
+                    <p>
+                        Flight fare: ${{getFare()}}<br>
+                        <mat-checkbox [disabled]="!hasMiles" [(ngModel)]="useMiles" class="example-margin">
+                            {{milesMessage}}</mat-checkbox><br>
                         Total: ${{getTotal()}}
                     </p>
                 </mat-card-content>

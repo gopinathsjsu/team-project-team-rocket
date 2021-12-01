@@ -26,6 +26,10 @@ export class RocketService {
     return this.http.get(this.api, { params: searchObject });
   }
 
+  getRocketById(flight_id: string) {
+    return this.http.get(this.api + '/id', { params: { flight_id: flight_id } });
+  }
+
   getSeatMap(flight_id: string) {
     return this.http.get(this.api + '/seats', { params: { flight_id: flight_id } });
   }
