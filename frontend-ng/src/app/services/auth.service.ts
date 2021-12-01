@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   logout() {
-    this.loggedIn = false;
+    localStorage.removeItem('token');
   }
 
   signup(signupObject: any) {

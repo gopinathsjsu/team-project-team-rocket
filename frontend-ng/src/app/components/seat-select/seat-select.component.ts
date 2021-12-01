@@ -12,8 +12,9 @@ export class SeatSelectComponent implements OnInit {
 
   subscription: Subscription;
   flight: any;
-  seatMap: any;
+  seats: any;
   selectedSeat: any;
+  seatMap: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private rocket: RocketService) {
     this.selectedSeat = null;
@@ -22,10 +23,14 @@ export class SeatSelectComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.rocket.flight.subscribe((data) => {
       this.flight = data;
-      this.rocket.getSeatMap(this.flight._id).subscribe((data) => {
-        this.seatMap = data;
+      this.rocket.getSeatMap(this.flight._id).subscribe((data: any) => {
+        this.seatMap = data['seats'];
       });
     });
+  }
+
+  getSeatDetails(seat: any) {
+    return seat['row']+seat['column']+'\n'+seat['class'];
   }
 
   selectSeat(seat: any) {

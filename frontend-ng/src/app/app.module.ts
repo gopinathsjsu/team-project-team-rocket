@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { DatePipe } from '@angular/common';
 
@@ -56,7 +58,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatToolbarModule, MatExpansionModule, MatCheckboxModule,
+    MatToolbarModule, MatExpansionModule, MatCheckboxModule, MatMenuModule, MatTooltipModule,
     MatAutocompleteModule, MatIconModule, MatCardModule, MatButtonModule, MatTabsModule, MatRadioModule, MatFormFieldModule, MatSelectModule,
     MatInputModule, MatDatepickerModule, MatNativeDateModule,
     NgbModule, NgbCollapseModule
