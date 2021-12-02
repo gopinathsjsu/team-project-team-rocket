@@ -4,8 +4,11 @@ Sprint 1: 10/08/2021 - 10/14/2021
 		1. Requirement Analyis
 		2. Pros and cons of multiple tech stack
 		3. Helped with the class diagram
+		4. Environment setup
 	- What am I planning to work on next?
 		1. Learning Node JS
+		2. Learn creating APIs with Angular and express
+		3. Learn mongoose
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
@@ -17,8 +20,9 @@ Sprint 2: 10/15/2021 - 10/21/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
 		1. Learnt Node JS
+		2. Learn about Mongoose
 	- What am I planning to work on next?
-		1. Get comfortable with creating APIs with React and express
+		1. Get comfortable with creating APIs with Angular and express
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
@@ -28,10 +32,11 @@ Sprint 2: 10/15/2021 - 10/21/2021
 Sprint 3: 10/22/2021 - 10/28/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
-		1. Created CRUD APIs for a dummy flight object.
-		2. Setup Postman for the team to check on API endpoints
+		1. Learnt creating APIs with angular, and explored express
+		2. Created APIs for user login, signup
 	- What am I planning to work on next?
-		1. APIs related to Flight search.		 
+		1. Login APIs
+		2. Auth token integration		 
 	- What tasks are blocked waiting on another team member?
 		1. None
  - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
@@ -40,24 +45,27 @@ Sprint 3: 10/22/2021 - 10/28/2021
 Sprint 4: 10/29/2021 - 11/4/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
-		1. APIs for Flight search.
-        2. Modify flight database to include seat class
+		1. Created Login APIs
+        2. Integrated Auth token
 	- What am I planning to work on next?
-        1. Learning React
-        2. Help with Flight search integration to front-end		 
+        1. Cancel booking
+        2. Update booking		 
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
-    "COMMUNICATION": I was out of town for two weeks because of which the in person meet was not possible. Everyone
-    was constantly kept updated on the work they are doing over calls and chats.
+    "COMMUNICATION": We couldn't meet in person as one of our team member was out of town. Everyone
+    updated on the work they are doing over calls and chats.
 
 Sprint 5: 11/05/2021 - 11/11/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
-		1. Fix the issue of flight search integration with front end.
-        2. Modify the flight search API to match the front-end query.
+		1. Implmented cancel booking.
+        2. Updated booking API.
+		3. Refactored user info route.
 	- What am I planning to work on next?
-		1. Front integration to display seat map.
+		1. Booking functions
+		2. User profile dashboard
+		3. Seat map API
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
@@ -67,10 +75,13 @@ Sprint 5: 11/05/2021 - 11/11/2021
 Sprint 6: 11/12/2021 - 11/18/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
-		1. Front-eend integration for seat map
-        2. Fix the issue with Date on flight search API.
+		1. Developed booking functions
+		2. Created and updated user profile dashboard
+		3. Devloped seat map API
 	- What am I planning to work on next?
-		1. Create search API for user by user id.	 
+		1. Reserve seat function
+		2. Rocket status and checkin components
+		3. Toggling flight, seat selection on reserve/cancel 
 	- What tasks are blocked waiting on another team member?
 		1. None
 - Select one of the XP Core Values and keep a journal of how the team kept these values throughout the project.
@@ -79,7 +90,9 @@ Sprint 6: 11/12/2021 - 11/18/2021
 Sprint 7: 11/19/2021 - 11/25/2021
 - Weekly Scrum Report
 	- What tasks did I work on / complete?
-		1. Create API to get user info by user ID
+		1. Developed seat reservation function
+		2. Created rocket status and rocket check-in components
+		3. Created a function to toggle fligh and/or seats on reservation and cacellation
 	- What am I planning to work on next?
 		1. Testing the application.
         2. Help with Application deployment.
