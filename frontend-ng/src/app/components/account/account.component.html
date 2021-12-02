@@ -1,66 +1,69 @@
-<!-- <div class="container"> -->
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-6">
-      <mat-card class="booking-card">
-        <mat-card-header>
-          <mat-card-title>My Trips</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Origin</th>
-                <th scope="col">Desination</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let booking of bookings">
-                <th scope="row">{{booking._id.substring(booking._id.length-6).toUpperCase()}}</th>
-                <td>{{booking.flight.origin}}</td>
-                <td>{{booking.flight.destination}}</td>
-                <td>{{getFullDate(booking.flight)}}</td>
-                <td>
-                  <button mat-raised-button color="update" [disabled]="checkDate(booking.flight)" (click)="updateBooking(booking._id)">UPDATE</button>
-                  <button mat-raised-button color="cancel" [disabled]="checkDate(booking.flight)" (click)="cancelBooking(booking._id)">CANCEL</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
-      <mat-card class="profile-card">
-        <mat-card-header>
-          <mat-card-title>My Profile</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <table class="table">
-            <tbody>
-              <tr>
-                <th scope="row">First Name</th>
-                <td class="align-right">{{profile.first_name}}</td>
-              </tr>
-              <tr>
-                <th scope="row">Last Name</th>
-                <td class="align-right">{{profile.last_name}}</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <mat-icon>stars</mat-icon><span style="position: absolute;">Miles Reward Points</span>
-                </th>
-                <td class="align-right">{{profile.miles}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-card-content>
-      </mat-card>
-    </div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-6">
+    <mat-card class="booking-card">
+      <mat-card-header>
+        <mat-card-title>My Trips</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let booking of bookings">
+              <th scope="row">{{booking._id.substring(booking._id.length-6).toUpperCase()}}</th>
+              <td>{{booking.flight.origin}}</td>
+              <td>{{booking.flight.destination}}</td>
+              <td>{{getFullDate(booking.flight)}}</td>
+              <td>{{getStatus(booking.status)}}</td>
+              <td *ngIf="booking.status && checkDate(booking.flight)">
+                <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">Update&nbsp;<mat-icon> arrow_drop_down </mat-icon></button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="reschedule(booking)">Reschedule</button>
+                  <button mat-menu-item (click)="changeSeat(booking)">Change Seat</button>
+                </mat-menu>
+                <button mat-raised-button color="cancel" (click)="cancelBooking(booking._id)">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
   </div>
-<!-- </div> -->
+  <div class="col-md-1"></div>
+  <div class="col-md-3">
+    <mat-card class="profile-card">
+      <mat-card-header>
+        <mat-card-title>My Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">First Name</th>
+              <td class="align-right">{{profile.first_name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last Name</th>
+              <td class="align-right">{{profile.last_name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <mat-icon>stars</mat-icon><span style="position: absolute;">Miles Reward Points</span>
+              </th>
+              <td class="align-right">{{profile.miles}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

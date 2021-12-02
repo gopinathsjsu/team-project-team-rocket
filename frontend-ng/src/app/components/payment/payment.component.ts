@@ -79,6 +79,9 @@ export class PaymentComponent implements OnInit {
   }
 
   bookRocket() {
+    if (!this.paymentForm.valid)
+      return;
+      
     let bookingObject = {
       user_id: localStorage.getItem('token'),
       flight_id: this.flight._id,

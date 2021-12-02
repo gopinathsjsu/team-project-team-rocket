@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { DatetimeService } from 'src/app/services/datetime.service';
 import { RocketService } from 'src/app/services/rocket.service';
 import { UserService } from 'src/app/services/user.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-account',
@@ -32,11 +33,10 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  checkDate(flight: any){
-    // console.log(flight.departure_date)
+  checkDate(flight: any) {
     const now = new Date();
     const currentDate: any = moment(now).format('YYYYMMDD');
-    if(flight.departure_date < currentDate) {
+    if (flight.departure_date >= currentDate) {
       return true
     }
     return false;
