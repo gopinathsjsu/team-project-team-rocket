@@ -37,6 +37,8 @@ import { SeatSelectComponent } from './components/seat-select/seat-select.compon
 import { PaymentComponent } from './components/payment/payment.component';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
+import { RocketStatusComponent } from './components/rocket-status/rocket-status.component';
+import { CheckinComponent } from './components/checkin/checkin.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { HomeComponent } from './components/home/home.component';
     SeatSelectComponent,
     PaymentComponent,
     AccountComponent,
-    HomeComponent
+    HomeComponent,
+    RocketStatusComponent,
+    CheckinComponent
   ],
   imports: [
     BrowserModule,
