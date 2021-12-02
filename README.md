@@ -12,6 +12,13 @@
 3. Database - MongoDB
 4. Hosting - AWS - Elastic beanstalk
 
+## Individual ownership
+1. Front End - Siddh Patel, Sudheendra Katekar
+2. Back End - Sakshi Kasat, Sudheendra Katekar
+3. Database - Aniruddha Arun Narkhede
+4. Hosting - Aniruddha Arun Narkhede
+All the members have contribution in every component but the ownership is as mentioned above.
+
 ## Instructions
 
 1. Clone repo
