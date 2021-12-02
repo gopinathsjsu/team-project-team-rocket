@@ -41,6 +41,7 @@ import { RocketStatusComponent } from './components/rocket-status/rocket-status.
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { SeatUpdateComponent } from './components/seat-update/seat-update.component';
 import { FlightUpdateComponent } from './components/flight-update/flight-update.component';
+import { FlightUpdateSeatComponent } from './components/flight-update-seat/flight-update-seat.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FlightUpdateComponent } from './components/flight-update/flight-update.
     RocketStatusComponent,
     CheckinComponent,
     SeatUpdateComponent,
-    FlightUpdateComponent
+    FlightUpdateComponent,
+    FlightUpdateSeatComponent
   ],
   imports: [
     BrowserModule,

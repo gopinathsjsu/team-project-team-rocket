@@ -21,20 +21,21 @@ export class FlightUpdateComponent implements OnInit {
   minDate: Date;
 
   constructor(private formBuilder: FormBuilder, private datetime: DatetimeService,
-    private route: ActivatedRoute, private router: Router, private rocket: RocketService, private data: DataService) {
-      this.searchForm = this.formBuilder.group({
-        origin: [this.origin, Validators.required],
-        destination: [this.params.destination, Validators.required],
-        departure_date: [this.datetime.getDate(this.params.departure_date), Validators.required],
-      });
-    }
-
-  ngOnInit(): void {
+    private router: Router, private rocket: RocketService, private data: DataService) {
     this.subscription = this.data.flight.subscribe((data: any) => {
       this.origin = data.origin;
       this.destination = data.destination;
     });
     this.minDate = new Date();
+    this.searchForm = this.formBuilder.group({
+      origin: [this.origin, Validators.required],
+      destination: [this.destination, Validators.required],
+      departure_date: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+
   }
 
   getTime(time: any) {
@@ -50,7 +51,7 @@ export class FlightUpdateComponent implements OnInit {
 
   selectFlight(flight: any) {
     this.data.changeFlight(flight);
-    this.router.navigate(['/flights/seats']);
+    this.router.navigate(['/flights/results/update/seats']);
   }
 
 }

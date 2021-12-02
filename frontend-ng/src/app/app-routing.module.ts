@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './components/account/account.component';
 import { FlightSelectComponent } from './components/flight-select/flight-select.component';
+import { FlightUpdateSeatComponent } from './components/flight-update-seat/flight-update-seat.component';
 import { FlightUpdateComponent } from './components/flight-update/flight-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'flights/results/update',
     component: FlightUpdateComponent
+  },
+  {
+    path: 'flights/results/update/seats',
+    component: FlightUpdateSeatComponent
   },
   {
     path: 'flights/seats',

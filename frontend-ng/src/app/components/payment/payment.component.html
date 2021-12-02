@@ -1,10 +1,7 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <mat-card class="example-card">
-                <div class="row">
-                <div class="col-md-6">
+    <mat-card class="example-card">
+        <div class="row">
+            <div class="col-md-6">
                 <mat-card-header>
                     <mat-card-title>Your trip review</mat-card-title>
                     <mat-card-subtitle>
@@ -37,38 +34,52 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-raised-button color="back">BACK</button>
-                    <button mat-raised-button color="confirm" (click)="bookRocket()">CONFIRM</button>
                 </mat-card-actions>
-                </div>
-                <div class="col-md-6">
-                    <mat-card-header>
-                        <mat-card-title>Payment</mat-card-title>
-                        <mat-card-subtitle>
-                            <!-- <h2>{{flight.origin}} to {{flight.destination}}</h2> -->
-                            <h3>Select you preferred payment method</h3>
-                        </mat-card-subtitle>
-                    </mat-card-header>
-                    <div class="form-group d-sm-flex margin">
-                    <div class="d-flex align-items-center flex-fill position-relative">
-                        <mat-card-content>
-                            <p>
-                                <b>Debit/Credit Card Number</b>&nbsp;<mat-icon></mat-icon><br>
-                            </p>
-                        <mat-form-field>
-                            <input matInput formControlName="cardnumber" placeholder="Enter the card number">
-                        </mat-form-field>                            
-                            <p>
-                                <b>Card Expiry</b>&nbsp;<mat-icon></mat-icon><br>
-                            </p>
-                        <mat-form-field>
-                                <input matInput formControlName="expirydate" placeholder="MM/YY">
-                        </mat-form-field>
-                    </mat-card-content>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </mat-card>
+            </div>
+            <div class="col-md-6">
+                <mat-card-header>
+                    <mat-card-title>Payment</mat-card-title>
+                    <mat-card-subtitle>
+                        <h2>${{getTotal()}}</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <form [formGroup]="paymentForm" (ngSubmit)="bookRocket()">
+                <mat-card-content>
+                    <mat-form-field class="form-group">
+                        <mat-label>Credit/Debit Card Number</mat-label>
+                        <input matInput formControlName="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    </mat-form-field>
+                    <br>
+                    <mat-label>Expiry</mat-label>&nbsp;&nbsp;
+                    <mat-form-field class="form-group expiry">
+                        <mat-label>MM</mat-label>
+                        <mat-select disableRipple formControlName="mm">
+                            <mat-option *ngFor="let month of months" value="month">{{month}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field class="form-group expiry">
+                        <mat-label>YY</mat-label>
+                        <mat-select disableRipple formControlName="yy">
+                            <mat-option *ngFor="let year of years" value="year">{{year}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="form-group">
+                        <mat-label>CVV</mat-label>
+                        <input matInput formControlName="cvv" placeholder="XXX">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="form-group">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" placeholder="John Doe">
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="confirm">CONFIRM</button>
+                </mat-card-actions>
+                </form>
+            </div>
         </div>
-    </div>
+    </mat-card>
 </div>

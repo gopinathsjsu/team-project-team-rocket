@@ -16,6 +16,7 @@ router.get('/flights/id', flight.findById);
 
 router.post('/booking', booking.create);
 router.put('/booking/update/seat', booking.updateSeat);
+router.put('/booking/update/reschedule', booking.reschedule);
 router.delete('/booking', booking.cancel);
 
 router.get('/user/booking', booking.getBookingByUser);

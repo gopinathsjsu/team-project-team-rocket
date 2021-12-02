@@ -1,0 +1,33 @@
+.row {
+    margin-top: 5%;
+}
+
+.seatmap {
+    text-align: center;
+}
+
+.seat {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.reserved {
+    color: red;
+    cursor: not-allowed;
+}
+
+.selected {
+    color: green;
+}
+
+.mat-confirm {
+    background-color: green;
+    color: #fff;
+}
+
+.mat-back {
+    background-color: red;
+    color: #fff;
+}

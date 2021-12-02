@@ -23,4 +23,8 @@ export class BookingService {
     return this.http.put(this.api + '/update/seat', bookingObject);
   }
 
+  updateBooking(bookingObject: any) {
+    return this.http.put(this.api + '/update/reschedule', bookingObject);
+  }
+
 }

@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookingService } from 'src/app/services/booking.service';
@@ -22,9 +23,13 @@ export class PaymentComponent implements OnInit {
   milesMessage: any;
   useMiles: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router,
+  paymentForm: FormGroup;
+  months: string[] = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+  years: string[] = ['2022', '2023', '2024', '2025', '2026', '2027', '2028', '2028', '2030']
+
+  constructor(private router: Router,
     private user: UserService, private rocket: RocketService, private book: BookingService,
-    private date: DatePipe, private data: DataService) {
+    private date: DatePipe, private data: DataService, private formBuilder: FormBuilder) {
     this.subscription = this.data.flight.subscribe((data) => {
       this.flight = data;
     });
@@ -32,6 +37,13 @@ export class PaymentComponent implements OnInit {
       this.seat = data;
     });
     this.useMiles = false;
+    this.paymentForm = this.formBuilder.group({
+      cardNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      mm: new FormControl('', [Validators.required]),
+      yy: new FormControl('', [Validators.required]),
+      cvv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+      name: new FormControl('', [Validators.required])
+    });
   }
 
   ngOnInit(): void {
@@ -78,7 +90,7 @@ export class PaymentComponent implements OnInit {
     this.book.bookRocket(bookingObject).subscribe((data: any) => {
       alert(data['message']);
       if (data['success'])
-        this.router.navigate(['']);
+        this.router.navigate(['/account']);
     });
   }
 

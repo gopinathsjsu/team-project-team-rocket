@@ -2,11 +2,11 @@
     <mat-card>
         <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="example-full-width">
-                <input matInput disabled value="origin" placeholder="From...">
+                <input matInput disabled value="{{origin}}" placeholder="From...">
             </mat-form-field>
             <mat-icon>compare_arrows</mat-icon>&nbsp;&nbsp;
             <mat-form-field>
-                <input matInput disabled value="destination" placeholder="To...">
+                <input matInput disabled value="{{destination}}" placeholder="To...">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Outgoing</mat-label>

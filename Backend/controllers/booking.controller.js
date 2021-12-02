@@ -2,6 +2,7 @@ const url = require('url');
 const Booking = require('../models/bookings.model')
 const User = require('../models/users.model');
 const Flight = require('../models/flights.model');
+const { VirtualType } = require('mongoose');
 
 exports.create = async (req, res) => {
     if (!req.body) {
@@ -82,6 +83,42 @@ exports.updateSeat = async (req, res) => {
 }
 
 exports.reschedule = async (req, res) => {
+    if (!req.body) {
+        res.status(400).send({
+            message: 'Content cannot be empty'
+        });
+    }
+    const booking = new Booking({
+        user_id: req.body.user_id,
+        flight_id: req.body.new_flight_id,
+        booking_date: new Date(),
+        seat: req.body.new_seat,
+        status: true
+    });
+    try {
+        const old_flight = await Flight.findById(req.body.old_flight_id);
+        old_flight['seats'] = await toggleSeat(old_flight['seats'], req.body.old_seat, false);
+        const updatedOldFlight = await old_flight.save();
+
+        const new_flight = await Flight.findById(req.body.new_flight_id);
+        new_flight['seats'] = await toggleSeat(new_flight['seats'], req.body.new_seat, true);
+        const updatedNewFlight = await new_flight.save();
+
+        const newBooking = await booking.save();
+        if (newBooking == undefined)
+            return res.json({ success: false, message: 'There was an error. Try again' });
+        const old_booking = await Booking.findById(req.body.booking_id);
+        old_booking.status = false;
+        const canceled_booking = await old_booking.save();
+        if (canceled_booking == undefined)
+            return res.json({ success: false, message: 'There was an error. Try again' });
+        return res.json({ success: true, message: 'Booking updated!' });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: "Error -> update booking"
+        });
+    }
 
 }
 
