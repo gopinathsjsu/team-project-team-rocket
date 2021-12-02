@@ -12,12 +12,14 @@
 }
 
 .mat-update {
-    background-color: orange;
-    margin-right: 25px;
+    background-color: #335489;
+    margin-right: 15px;
+    font-size: 14px;
 }
 
 .mat-cancel {
-    background-color: crimson;
+    background-color: #ef5349;
+    font-size: 14px;
 }
 
 .align-right {

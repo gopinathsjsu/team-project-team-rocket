@@ -23,8 +23,8 @@
                 <td>{{booking.flight.destination}}</td>
                 <td>{{getFullDate(booking.flight)}}</td>
                 <td>
-                  <button mat-raised-button color="update" (click)="updateBooking(booking._id)">UPDATE</button>
-                  <button mat-raised-button color="cancel" (click)="cancelBooking(booking._id)">CANCEL</button>
+                  <button mat-raised-button color="update" [disabled]="checkDate(booking.flight)" (click)="updateBooking(booking._id)">UPDATE</button>
+                  <button mat-raised-button color="cancel" [disabled]="checkDate(booking.flight)" (click)="cancelBooking(booking._id)">CANCEL</button>
                 </td>
               </tr>
             </tbody>

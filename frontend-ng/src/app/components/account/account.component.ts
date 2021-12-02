@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { BookingService } from 'src/app/services/booking.service';
 import { DatetimeService } from 'src/app/services/datetime.service';
 import { RocketService } from 'src/app/services/rocket.service';
@@ -27,6 +28,16 @@ export class AccountComponent implements OnInit {
         });
       }
     });
+  }
+
+  checkDate(flight: any){
+    // console.log(flight.departure_date)
+    const now = new Date();
+    const currentDate: any = moment(now).format('YYYYMMDD');
+    if(flight.departure_date < currentDate) {
+      return true
+    }
+    return false;
   }
 
   getFullDate(flight: any) {
