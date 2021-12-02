@@ -1,1 +1,23 @@
-<p>rocket-status works!</p>
+<div class="container">
+    <form class="searchForm" style="margin-top: 5%;">
+        <div class="form-group d-sm-flex margin">
+            <div class="d-flex align-items-center flex-fill position-relative">
+                <mat-form-field>
+                    <input matInput formControlName="brnum" placeholder="Booking Reference Number">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group d-sm-flex margin" style="margin-bottom: 10%;">
+            <div class="d-flex align-items-center flex-fill position-relative">
+                <mat-form-field>
+                    <input matInput formControlName="lname" placeholder="Last Name">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <button mat-raised-button color="primary">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

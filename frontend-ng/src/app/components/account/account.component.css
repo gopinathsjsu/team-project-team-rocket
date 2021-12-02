@@ -11,8 +11,15 @@
     width: 100%;
 }
 
-.mat-warn {
-    margin-left: 5%;
+.mat-update {
+    background-color: #335489;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.mat-cancel {
+    background-color: #ef5349;
+    font-size: 14px;
 }
 
 .align-right {

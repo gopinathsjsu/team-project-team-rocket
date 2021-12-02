@@ -32,6 +32,16 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  checkDate(flight: any){
+    // console.log(flight.departure_date)
+    const now = new Date();
+    const currentDate: any = moment(now).format('YYYYMMDD');
+    if(flight.departure_date < currentDate) {
+      return true
+    }
+    return false;
+  }
+
   getFullDate(flight: any) {
     return this.datetime.getDateTime(flight.departure_date, flight.departure_time);
   }

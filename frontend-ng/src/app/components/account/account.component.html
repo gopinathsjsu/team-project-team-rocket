@@ -24,15 +24,9 @@
                 <td>{{booking.flight.origin}}</td>
                 <td>{{booking.flight.destination}}</td>
                 <td>{{getFullDate(booking.flight)}}</td>
-                <td>{{getStatus(booking.status)}}</td>
-                <td *ngIf="booking.status">
-                  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">UPDATE<mat-icon>arrow_drop_down
-                    </mat-icon></button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="reschedule(booking)">Reschedule</button>
-                    <button mat-menu-item (click)="changeSeat(booking)">Change Seat</button>
-                  </mat-menu>
-                  <button mat-raised-button color="warn" (click)="cancelBooking(booking._id)">CANCEL</button>
+                <td>
+                  <button mat-raised-button color="update" [disabled]="checkDate(booking.flight)" (click)="updateBooking(booking._id)">UPDATE</button>
+                  <button mat-raised-button color="cancel" [disabled]="checkDate(booking.flight)" (click)="cancelBooking(booking._id)">CANCEL</button>
                 </td>
               </tr>
             </tbody>
