@@ -39,6 +39,9 @@ import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
 import { RocketStatusComponent } from './components/rocket-status/rocket-status.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
+import { SeatUpdateComponent } from './components/seat-update/seat-update.component';
+import { FlightUpdateComponent } from './components/flight-update/flight-update.component';
+import { FlightUpdateSeatComponent } from './components/flight-update-seat/flight-update-seat.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { CheckinComponent } from './components/checkin/checkin.component';
     AccountComponent,
     HomeComponent,
     RocketStatusComponent,
-    CheckinComponent
+    CheckinComponent,
+    SeatUpdateComponent,
+    FlightUpdateComponent,
+    FlightUpdateSeatComponent
   ],
   imports: [
     BrowserModule,
