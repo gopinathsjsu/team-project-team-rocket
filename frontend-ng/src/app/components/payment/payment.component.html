@@ -3,6 +3,8 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <mat-card class="example-card">
+                <div class="row">
+                <div class="col-md-6">
                 <mat-card-header>
                     <mat-card-title>Your trip review</mat-card-title>
                     <mat-card-subtitle>
@@ -37,6 +39,35 @@
                     <button mat-raised-button color="back">BACK</button>
                     <button mat-raised-button color="confirm" (click)="bookRocket()">CONFIRM</button>
                 </mat-card-actions>
+                </div>
+                <div class="col-md-6">
+                    <mat-card-header>
+                        <mat-card-title>Payment</mat-card-title>
+                        <mat-card-subtitle>
+                            <!-- <h2>{{flight.origin}} to {{flight.destination}}</h2> -->
+                            <h3>Select you preferred payment method</h3>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <div class="form-group d-sm-flex margin">
+                    <div class="d-flex align-items-center flex-fill position-relative">
+                        <mat-card-content>
+                            <p>
+                                <b>Debit/Credit Card Number</b>&nbsp;<mat-icon></mat-icon><br>
+                            </p>
+                        <mat-form-field>
+                            <input matInput formControlName="cardnumber" placeholder="Enter the card number">
+                        </mat-form-field>                            
+                            <p>
+                                <b>Card Expiry</b>&nbsp;<mat-icon></mat-icon><br>
+                            </p>
+                        <mat-form-field>
+                                <input matInput formControlName="expirydate" placeholder="MM/YY">
+                        </mat-form-field>
+                    </mat-card-content>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </mat-card>
         </div>
     </div>
