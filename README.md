@@ -23,3 +23,7 @@
 7. Run `npm install`
 8. Run `ng serve` to start front end server
 9. Access UI at `localhost:4200`
+
+## Architecture Diagram
+
+![alt text](https://github.com/gopinathsjsu/team-project-team-rocket/blob/master/Architecture_diagram.png)
