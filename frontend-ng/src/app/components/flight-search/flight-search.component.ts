@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
 import { RocketService } from 'src/app/services/rocket.service';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { DataService } from 'src/app/services/data.service';
+import { DatetimeService } from 'src/app/services/datetime.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -19,7 +20,8 @@ export class FlightSearchComponent implements OnInit {
   searchForm: FormGroup;
   minDate: Date;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private date: DatePipe, private rocket: RocketService) {
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private data: DataService, private rocket: RocketService, private datetime: DatetimeService) {
     this.searchForm = this.formBuilder.group({
       trip_type: ['ow', Validators.required],
       origin: ['', Validators.required],
@@ -58,9 +60,9 @@ export class FlightSearchComponent implements OnInit {
     if (this.searchForm.invalid) {
       return;
     }
-    this.searchForm.value.departure_date = this.date.transform(this.searchForm.value.departure_date, 'yyyyMMdd')
+    this.searchForm.value.departure_date = this.datetime.convertToYYYYMMDD(this.searchForm.value.departure_date);
     this.rocket.searchRockets(this.searchForm.value).subscribe((data) => {
-      this.rocket.changeList(data);
+      this.data.changeList(data);
     });
     this.router.navigate(['/flights/results', this.searchForm.value]);
     this.searchForm.reset();

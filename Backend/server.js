@@ -19,7 +19,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', routes);
-app.use(express.static(__dirname + '/dist'));
+// app.use(express.static(__dirname + '/dist'));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

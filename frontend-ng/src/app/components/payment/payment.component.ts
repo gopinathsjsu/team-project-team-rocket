@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BookingService } from 'src/app/services/booking.service';
+import { DataService } from 'src/app/services/data.service';
 import { RocketService } from 'src/app/services/rocket.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -23,11 +24,11 @@ export class PaymentComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     private user: UserService, private rocket: RocketService, private book: BookingService,
-    private date: DatePipe) {
-    this.subscription = this.rocket.flight.subscribe((data) => {
+    private date: DatePipe, private data: DataService) {
+    this.subscription = this.data.flight.subscribe((data) => {
       this.flight = data;
     });
-    this.subscription = this.rocket.seat.subscribe((data) => {
+    this.subscription = this.data.seat.subscribe((data) => {
       this.seat = data;
     });
     this.useMiles = false;

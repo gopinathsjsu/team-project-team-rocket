@@ -1,0 +1,50 @@
+<div class="container">
+    <mat-card>
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="example-full-width">
+                <input matInput disabled value="origin" placeholder="From...">
+            </mat-form-field>
+            <mat-icon>compare_arrows</mat-icon>&nbsp;&nbsp;
+            <mat-form-field>
+                <input matInput disabled value="destination" placeholder="To...">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Outgoing</mat-label>
+                <input matInput formControlName="departure_date" [min]="minDate" [matDatepicker]="outgoing_picker">
+                <mat-datepicker-toggle matSuffix [for]="outgoing_picker"></mat-datepicker-toggle>
+                <mat-datepicker #outgoing_picker></mat-datepicker>
+            </mat-form-field>
+            <button class="btn btn-primary rounded-3">Search</button>
+        </form>
+    </mat-card>
+
+    <br><br>
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel *ngFor="let flight of flightList">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="col-md-4">{{ flight.origin_code }}&nbsp;<mat-icon>arrow_right_alt</mat-icon>&nbsp;{{
+                        flight.destination_code }}</div>
+                    <div class="col-md-4">{{ getTime(flight.departure_time) }} - {{
+                        getTime(flight.arrival_time) }}</div>
+                    <div class="col-md-4">
+                        Starting from&nbsp;&nbsp;${{ flight.price }}
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-md-5">
+                    <h3>{{ flight.origin }}</h3>
+                    <h4>{{ flight.origin_airport }}</h4>
+                </div>
+                <div class="col-md-5">
+                    <h3>{{ flight.destination }}</h3>
+                    <h4>{{ flight.destination_airport }}</h4>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary rounded-3" (click)="selectFlight(flight)">Select</button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

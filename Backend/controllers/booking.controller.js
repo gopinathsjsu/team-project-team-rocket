@@ -1,7 +1,6 @@
 const url = require('url');
 const Booking = require('../models/bookings.model')
 const User = require('../models/users.model');
-const Seat = require('../models/seat.model');
 const Flight = require('../models/flights.model');
 
 exports.create = async (req, res) => {
@@ -16,6 +15,7 @@ exports.create = async (req, res) => {
         booking_date: new Date(),
         seat: JSON.parse(req.body.seat),
         price: req.body.price,
+        status: true
     });
     let use_miles = req.body.use_miles;
 
@@ -26,14 +26,6 @@ exports.create = async (req, res) => {
         const updateFlight = await Flight.findOne(query);
         const seats = updateFlight['seats'];
 
-        // let row = booking.seat.row;
-        // let col = undefined;
-        // switch (booking.seat.column) {
-        //     case 'A': col = 0; break;
-        //     case 'B': col = 1; break;
-        //     case 'C': col = 2; break;
-        // }
-        // seats[row - 1][col].isReserved = true;
         updateFlight['seats'] = await toggleSeat(updateFlight['seats'], booking.seat, true);
         const updatedFlight = await updateFlight.save();
 
@@ -55,6 +47,67 @@ exports.create = async (req, res) => {
     }
 
 };
+
+exports.updateSeat = async (req, res) => {
+    if (!req.body) {
+        res.status(400).send({
+            message: 'Content cannot be empty'
+        });
+    }
+    const booking_id = req.body.booking_id;
+    const old_seat = req.body.old_seat;
+    const new_seat = req.body.new_seat;
+    const query = { _id: booking_id };
+    try {
+        const currentBooking = await Booking.findOne(query);
+        currentBooking.booking_date = new Date();
+
+        const flight = await Flight.findById(currentBooking.flight_id);
+        flight['seats'] = await toggleSeat(flight['seats'], old_seat, false);
+        flight['seats'] = await toggleSeat(flight['seats'], new_seat, true);
+        const updatedFlight = await flight.save();
+
+        currentBooking.seat = new_seat;
+        const updatedBooking = await currentBooking.save();
+        if (updatedBooking == undefined) {
+            return res.json({ success: false, message: "There was an error. Try again" });
+        }
+        return res.json({ success: true, message: "Seat updated" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: "Error -> update booking"
+        });
+    }
+}
+
+exports.reschedule = async (req, res) => {
+
+}
+
+exports.cancel = async (req, res) => {
+    const params = url.parse(req.url, true).query;
+    const query = { _id: params.booking_id };
+    try {
+        const toCancel = await Booking.findOne(query);
+
+        const flight = await Flight.findById(toCancel['flight_id']);
+        flight['seats'] = await toggleSeat(flight['seats'], toCancel.seat, false);
+        const updatedFlight = await flight.save();
+
+        toCancel.status = false;
+        const cancelBooking = await toCancel.save();
+        if (cancelBooking == undefined) {
+            return res.json({ success: false, message: "There was an error. Try again" });
+        }
+        return res.json({ success: true, message: "Booking deleted!" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            message: "Error -> cancel booking"
+        });
+    }
+}
 
 exports.getBookingByUser = async (req, res) => {
     if (!req.body) {
@@ -88,47 +141,6 @@ exports.getBookingByFlight = async (req, res) => {
         console.log(e);
         res.status(500).send({
             message: "Error -> getBookingByFlight"
-        });
-    }
-}
-
-exports.update = async (req, res) => {
-    const params = url.parse(req.url, true).query;
-    const query = { _id: params.booking_id };
-    try {
-        const currentBooking = await Booking.findOne(query);
-        currentBooking.flight_id = params.flight_id;
-        currentBooking.booking_date = new Date();
-        const updatedBooking = await currentBooking.save();
-        if (updatedBooking == undefined) {
-            return res.json({ success: false, message: "There was an error. Try again" });
-        }
-        return res.json({ success: true, message: "Booking updated" });
-    } catch (e) {
-        console.log(e);
-        res.status(500).send({
-            message: "Error -> update booking"
-        });
-    }
-}
-
-exports.cancel = async (req, res) => {
-    const params = url.parse(req.url, true).query;
-    const query = { _id: params.booking_id };
-    try {
-        const toDelete = await Booking.findOne(query);
-        const flight = await Flight.findById(toDelete['flight_id']);
-        flight['seats'] = await toggleSeat(flight['seats'], toDelete.seat, false);
-        const updatedFlight = await flight.save();
-        const cancelBooking = await Booking.deleteOne(query);
-        if (cancelBooking.deletedCount == 1) {
-            return res.json({ success: true, message: "Booking deleted" });
-        }
-        return res.json({ success: false, message: "There was an error. Try again" });
-    } catch (e) {
-        console.log(e);
-        res.status(500).send({
-            message: "Error -> cancel booking"
         });
     }
 }

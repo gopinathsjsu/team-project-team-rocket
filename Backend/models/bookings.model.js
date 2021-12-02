@@ -8,7 +8,8 @@ const BookingSchema = new Schema({
     status: { type: String },
     booking_date: { type: Date },
     seat: { type: Seat.schema },
-    price: { type: Number }
+    price: { type: Number },
+    status: { type: Boolean }
 },
     { timestamps: true }
 );

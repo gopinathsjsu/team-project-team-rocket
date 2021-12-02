@@ -11,13 +11,8 @@
     width: 100%;
 }
 
-.mat-update {
-    background-color: orange;
-    margin-right: 25px;
-}
-
-.mat-cancel {
-    background-color: crimson;
+.mat-warn {
+    margin-left: 5%;
 }
 
 .align-right {

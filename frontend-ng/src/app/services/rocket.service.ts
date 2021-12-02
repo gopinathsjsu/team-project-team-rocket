@@ -11,15 +11,6 @@ export class RocketService {
 
   private api: string = environment.api + '/flights';
 
-  private flightListSource = new BehaviorSubject([]);
-  flightList = this.flightListSource.asObservable();
-
-  private flightSource = new BehaviorSubject({});
-  flight = this.flightSource.asObservable();
-
-  private seatSource = new BehaviorSubject({});
-  seat = this.seatSource.asObservable();
-
   constructor(private http: HttpClient) { }
 
   getPlanets() {
@@ -36,18 +27,6 @@ export class RocketService {
 
   getSeatMap(flight_id: string) {
     return this.http.get(this.api + '/seats', { params: { flight_id: flight_id } });
-  }
-
-  changeList(flightList: any) {
-    this.flightListSource.next(flightList);
-  }
-
-  changeFlight(flight: any) {
-    this.flightSource.next(flight);
-  }
-
-  changeSeat(seat: any) {
-    this.seatSource.next(seat);
   }
 
 }

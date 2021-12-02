@@ -1,6 +1,7 @@
-<div class="container">
+<!-- <div class="container"> -->
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
       <mat-card class="booking-card">
         <mat-card-header>
           <mat-card-title>My Trips</mat-card-title>
@@ -13,6 +14,7 @@
                 <th scope="col">Origin</th>
                 <th scope="col">Desination</th>
                 <th scope="col">Date</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -22,9 +24,15 @@
                 <td>{{booking.flight.origin}}</td>
                 <td>{{booking.flight.destination}}</td>
                 <td>{{getFullDate(booking.flight)}}</td>
-                <td>
-                  <button mat-raised-button color="update" (click)="updateBooking(booking._id)">UPDATE</button>
-                  <button mat-raised-button color="cancel" (click)="cancelBooking(booking._id)">CANCEL</button>
+                <td>{{getStatus(booking.status)}}</td>
+                <td *ngIf="booking.status">
+                  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">UPDATE<mat-icon>arrow_drop_down
+                    </mat-icon></button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="reschedule(booking)">Reschedule</button>
+                    <button mat-menu-item (click)="changeSeat(booking)">Change Seat</button>
+                  </mat-menu>
+                  <button mat-raised-button color="warn" (click)="cancelBooking(booking._id)">CANCEL</button>
                 </td>
               </tr>
             </tbody>
@@ -32,7 +40,8 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
       <mat-card class="profile-card">
         <mat-card-header>
           <mat-card-title>My Profile</mat-card-title>
@@ -60,4 +69,4 @@
       </mat-card>
     </div>
   </div>
-</div>
+<!-- </div> -->

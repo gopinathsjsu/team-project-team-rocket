@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './components/account/account.component';
-import { FlightSearchComponent } from './components/flight-search/flight-search.component';
 import { FlightSelectComponent } from './components/flight-select/flight-select.component';
+import { FlightUpdateComponent } from './components/flight-update/flight-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SeatSelectComponent } from './components/seat-select/seat-select.component';
+import { SeatUpdateComponent } from './components/seat-update/seat-update.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
 
@@ -20,8 +21,16 @@ const routes: Routes = [
     component: FlightSelectComponent
   },
   {
+    path: 'flights/results/update',
+    component: FlightUpdateComponent
+  },
+  {
     path: 'flights/seats',
     component: SeatSelectComponent
+  },
+  {
+    path: 'flights/seats/update',
+    component: SeatUpdateComponent
   },
   {
     path: 'flights/payment',

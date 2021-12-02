@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 
@@ -18,4 +18,9 @@ export class BookingService {
   cancelBooking(booking_id: string) {
     return this.http.delete(this.api, { params: { booking_id: booking_id } });
   }
+
+  updateSeat(bookingObject: any) {
+    return this.http.put(this.api + '/update/seat', bookingObject);
+  }
+
 }
