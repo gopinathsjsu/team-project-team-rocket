@@ -1,0 +1,3 @@
+.form .option input:checked~.checkmark:after {
+    display: block
+}
