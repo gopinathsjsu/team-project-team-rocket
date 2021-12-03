@@ -17,7 +17,7 @@ export class SeatSelectComponent implements OnInit {
   selectedSeat: any;
   seatMap: any;
 
-  constructor(private router: Router, private rocket: RocketService, private data: DataService) {
+  constructor(private route: ActivatedRoute, private router: Router, private rocket: RocketService, private data: DataService) {
     this.selectedSeat = null;
   }
 
@@ -36,6 +36,12 @@ export class SeatSelectComponent implements OnInit {
 
   selectSeat(seat: any) {
     this.selectedSeat = seat;
+  }
+
+  back() {
+    this.route.params.subscribe(params => {
+      this.router.navigate(['/flights/results', params])}
+      );
   }
 
   confirm() {

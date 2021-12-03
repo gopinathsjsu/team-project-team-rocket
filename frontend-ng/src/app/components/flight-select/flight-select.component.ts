@@ -50,7 +50,7 @@ export class FlightSelectComponent implements OnInit {
 
   selectFlight(flight: any) {
     this.data.changeFlight(flight);
-    this.router.navigate(['/flights/seats']);
+    this.router.navigate(['/flights/seats', this.searchForm.value]);
   }
 
 }
